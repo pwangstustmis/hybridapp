@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flutter</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+
+    <!-- Side-Nav -->
+    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column" id="sidebar">
+      <ul class="nav flex-column text-white w-100">
+        <li class="nav-item" style="background-color: #fff;padding-left:10px;padding-top:10px;border-bottom: rgb(255, 115, 0) 2px solid;font-size: 16pt;">
+          <p style="color:rgb(248, 138, 11);font-weight: 700;">Flutter<br/>跨平台行動程式進階應用開發</p>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a href="index.html" class="nav-link">簡介與軟體安裝</a></span>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link" href="#topic1" class="nav-item" data-bs-toggle="collapse" aria-expanded="false" aria-controls="topic1">
+            <span class="mx-2">第一個專案</span>
+            <i class="fas fa-angle-right"></i>
+          </div>
+          <div class="collapse" id="topic1">
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="firstapp_1.html">專案檔案架構</a></li>
+            </ul>
+            <ul>
+                <li class="menuitem"><a class="nav-link" href="firstapp_3.html">頁面架構</a></li>
+              </ul>
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="firstapp_2.html">專案程式說明</a></li>
+            </ul>           
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="#">Dart語言</a></li>
+            </ul>
+          </div>
+        </li>     
+        
+        <li href="#" class="nav-link">
+          <i class="fas fa-file"></i>
+          <span class="mx-2">第一個專案</span>
+        </li>
+      </ul>
+    </div>
+
+
+    <!-- Main Wrapper -->
+    <div class="p-2 my-container active-cont">
+      <!-- Breadcrumb -->
+      <div class="bg-light px-5" aria-label="breadcrumb" style="height:40px;position:fixed;width:100%;top:0;">
+        <a class="btn border-0" id="menu-btn" style="position:fixed"><i class="fas fa-bars"></i></a>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">第一個專案- 頁面架構</li>
+        </ol>
+      </div>
+      <!--End Top Nav -->
+
+      <!-- main page -->
+      <div style="margin-top:50px;">
+        <h3 class="text-danger p-3">內容涵蓋</h3>
+        <p class="px-3" style="margin-top:-20px;">
+          <ul>
+            <li>頁面架構與Widgets樹</li>
+          </ul>
+        </p>
+        <div class="p-3">
+          <h3 class="text-danger">頁面架構與Widgets樹</h3>
+          <p>
+            Flutter利用Dart語言進行設計，而每個flutter頁面均由許多widgets所構成，widget為Dart類別(class)，藉由整合不同的widgets來建立APP應用程式。widget包含具狀態(stateful)與不具狀態(stateless)兩種，具狀態widget允許動態修改widget內容值，也就是說頁面元件內容如果會動態變動，就需要使用stateful(具狀態)widget，反之stateless(不具狀態)widget代表widget內容在APP應用程式中絕不會改變。每個widget一定會有一個build函數，用於將現在的widget加入project widgets架構中。<br/>Flutter的版面由許多不同的widgets(程式片段)組合而成，設計時會將版面由上而下分解成widgets tree，再將設計好的widgets由下而上進行組合來建構整個設計版面，以下圖為例：整個版面以縱向(直)來看包含一張圖片；一排字、圖示與文字；一排按鈕與一塊文字，這樣的版面可分解為一欄(column)包含四個小孩(children)。欄的第二個小孩為橫向列(row)包含3個小孩，而橫向的第一個小孩為縱向欄(column)包含兩個小孩。如此類推我們將版面分解為如圖的widgets樹。
+          </p>
+          <p><img src="imgs/firstapp/firstapp_3-1.jpg"></p>
+          <p><img src="imgs/firstapp/firstapp_3-2.png"></p>          
+        </div>
+        
+        
+
+
+      </div>
+    </div>
+
+    <!-- bootstrap js -->
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>  
+    
+    <!-- custom js -->
+    <script>
+      var menu_btn = document.querySelector("#menu-btn");
+      var sidebar = document.querySelector("#sidebar");
+      var container = document.querySelector(".my-container");
+      menu_btn.addEventListener("click", () => {
+        sidebar.classList.toggle("active-nav");
+        container.classList.toggle("active-cont");
+      });
+    </script>
+  </body>
+</html>
