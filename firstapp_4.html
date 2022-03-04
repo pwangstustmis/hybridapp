@@ -61,7 +61,7 @@
       <div class="bg-light px-5" aria-label="breadcrumb" style="height:40px;position:fixed;width:100%;top:0;">
         <a class="btn border-0" id="menu-btn" style="position:fixed"><i class="fas fa-bars"></i></a>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item">第一個專案- 頁面架構</li>
+          <li class="breadcrumb-item">第一個專案- Dart語言</li>
         </ol>
       </div>
       <!--End Top Nav -->
@@ -71,24 +71,109 @@
         <h3 class="text-danger p-3">內容涵蓋</h3>
         <p class="px-3" style="margin-top:-20px;">
           <ul>
-            <li>頁面架構與Widgets樹</li>
+            <li>語法、變數、資料類型</li>
           </ul>
         </p>
+        <p class="p-3">
+          
+        </p>
         <div class="p-3">
-          <h3 class="text-danger">頁面架構與Widgets樹</h3>
+          <h3 class="text-danger">語法、變數、資料類型</h3>
           <p>
-            Flutter利用Dart語言進行設計，而每個flutter頁面均由許多widgets所構成，widget為Dart類別(class)，藉由整合不同的widgets來建立APP應用程式。widget包含具狀態(stateful)與不具狀態(stateless)兩種，具狀態widget允許動態修改widget內容值，也就是說頁面元件內容如果會動態變動，就需要使用stateful(具狀態)widget，反之stateless(不具狀態)widget代表widget內容在APP應用程式中絕不會改變。每個widget一定會有一個build函數，用於將現在的widget加入project widgets架構中。<br/>Flutter的版面由許多不同的widgets(程式片段)組合而成，設計時會將版面由上而下分解成widgets tree，再將設計好的widgets由下而上進行組合來建構整個設計版面，以下圖為例：整個版面以縱向(直)來看包含一張圖片；一排字、圖示與文字；一排按鈕與一塊文字，這樣的版面可分解為一欄(column)包含四個小孩(children)。欄的第二個小孩為橫向列(row)包含3個小孩，而橫向的第一個小孩為縱向欄(column)包含兩個小孩。如此類推我們將版面分解為如圖的widgets樹。
+            Dart為Google開發前端物件導向語言，程式語法類似Java，變數大小寫不同，資料類型包含<span class="text-danger">num(整數或小數)、String(字串)、bool(布林值)、List(陣列)、Set(集合)、Map(對應)</span>。
           </p>
-          <p><img src="imgs/firstapp/firstapp_3-1.jpg"></p>
-          <p><img src="imgs/firstapp/firstapp_3-2.png"></p>          
+          <ul>
+              <li>
+                <span class="text-danger">String(字串)：可包含於單引號或雙引號，具變數解析功能，所謂變數解析是指引號內可包含變數名稱，程式執行時會將變數值解析至字串中。</span>
+              </li>
+              <pre><code>
+int a=1;
+double b=1.1;
+num c=3;
+num d=1.1;
+              </code></pre>
+              <li>
+                <span class="text-danger">num(整數或小數)：包含整數(int)與小數(double)。</span>
+              </li>
+              <pre><code>
+int a=1;
+double b=1.1;
+num c=3;
+num d=1.1;
+              </code></pre>
+              <li>
+                <span class="text-danger">bool(布林)：包含true、false。</span>
+              </li>
+              <pre><code>
+bool a=true;
+              </code></pre>
+              <li>
+                <span class="text-danger">list(陣列)</span>
+              </li>
+              <pre><code>
+var list1=[1,2,3,4];
+var list2=['a','b','c','d'];
+              </code></pre>
+              <li>
+                <span class="text-danger">list(陣列)</span>，下列程式定義整數陣列 list1 並利用迴圈印出 list1 每個值。
+              </li>
+              <pre><code>
+void main() {
+  var list1=[1,2,3,4];
+  list1.forEach((data){
+    print(data);
+  });
+}
+              </code></pre>
+              <li>
+                <span class="text-danger">set(集合)</span>，集合不像陣列有順序，同時資料包含於 { }中，而且集合元素不限定相同資料類型。
+              </li>
+              <pre><code>
+void main() {
+  var set1={1,2,'abc','def'};
+  set1.forEach((data){
+    print(data);
+  });
+}
+              </code></pre>
+              <li>
+                <span class="text-danger">Map(對應)</span>，對應資料類型為一物件，他定義鍵(key)與值(value)對應。
+              </li>
+              <pre><code>
+void main() {
+  var map1={'name':'甲','phone':'1234567'};
+  print(map1['name']);
+  var map2=new Map<String,dynamic>();
+  map2['id']=1;
+  map2['address']='南台街1號';
+  print(map2);
+}
+              </code></pre>
+              <li>
+                <span class="text-danger">函數</span>，函數定義包含傳回類型、函數名稱、括符、與代入參數。
+              </li>
+              <pre><code>
+int mysum(int i,int j) {
+  return i+j;
+}
+void main() {
+  print(mysum(10,20));
+}
+              </code></pre>
+          </ul>
+          
         </div>
         
+        
+        
+
+
       </div>
     </div>
 
     <!-- bootstrap js -->
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.bundle.min.js"></script>  
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>  
     
     <!-- custom js -->
     <script>

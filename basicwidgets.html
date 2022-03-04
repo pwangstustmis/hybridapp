@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flutter</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+
+    <!-- Side-Nav -->
+    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column" id="sidebar">
+      <ul class="nav flex-column text-white w-100">
+        <li class="nav-item" style="background-color: #fff;padding-left:10px;padding-top:10px;border-bottom: rgb(255, 115, 0) 2px solid;font-size: 16pt;">
+          <p style="color:rgb(248, 138, 11);font-weight: 700;">Flutter<br/>跨平台行動程式進階應用開發</p>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a href="index.html" class="nav-link">簡介與軟體安裝</a></span>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link" href="#topic1" class="nav-item" data-bs-toggle="collapse" aria-expanded="false" aria-controls="topic1">
+            <span class="mx-2">第一個專案</span>
+            <i class="fas fa-angle-right"></i>
+          </div>
+          <div class="collapse" id="topic1">
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="firstapp_1.html">專案檔案架構</a></li>
+            </ul>
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="firstapp_3.html">頁面架構</a></li>
+            </ul>
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="firstapp_2.html">專案程式說明</a></li>
+            </ul>           
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="#">Dart語言</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link" href="#topic2" class="nav-item" data-bs-toggle="collapse" aria-expanded="false" aria-controls="topic2">
+            <span class="mx-2">Widgets控制項</span>
+            <i class="fas fa-angle-right"></i>
+          </div>
+          <div class="collapse" id="topic2">
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="basicwidgets.html">基本Widgets</a></li>
+            </ul>
+          </div>
+        </li>     
+      </ul>
+    </div>
+
+
+    <!-- Main Wrapper -->
+    <div class="p-2 my-container active-cont">
+      <!-- Breadcrumb -->
+      <div class="bg-light px-5" aria-label="breadcrumb" style="height:40px;position:fixed;width:100%;top:0;">
+        <a class="btn border-0" id="menu-btn" style="position:fixed"><i class="fas fa-bars"></i></a>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">Widgets控制項- 基本Widgets</li>
+        </ol>
+      </div>
+      <!--End Top Nav -->
+
+      <!-- main page -->
+      <div style="margin-top:50px;">
+        <h3 class="text-danger p-3">內容涵蓋</h3>
+        <p class="px-3" style="margin-top:-20px;">
+          <ul>
+            <li>基本Widgets</li>
+          </ul>
+        </p>
+        <p class="p-3">
+          本單元將介紹基本widgets包含MaterialApp、Scaffold、Container、Row、Column、Image、Text、Icon等。Widget介紹由MaterialApp開始，之後後介紹MaterialApp預設Scaffold(鷹架)版面，Scaffold widget為Android material design最常用的頁面設計包含appBar、BottomappBar、Drawer或BottomSheet等，藉由Scaffold widget，設計者能快速的建立頁面。<br/>
+          之後利用Scaffold widget中 <span class="text-danger">body</span> 屬性來介紹基本常用屬性widgets包含Text(文字)widget–用於顯示文字字串。Icon(圖示)widget–用於顯示圖示。Image(圖片)widget–用於顯示圖片。<br/>
+          最後將搭配版面配置widgets包含Container(容器)widget–用於放置內容的方塊，類似網頁設計的div方塊，可設定大小、前景、背景及內距等。Row(列)widget–用於包含橫向內容。Column(欄)widget–用於包含縱向內容。appBar widget用於設定頁面上方App控制列。PlaceHolder(預留位置)–用於設定即將顯示內容的區域。
+        </p>
+        <div class="p-3">
+          <h3 class="text-danger">基本Widgets- MaterialApp</h3>
+          <p>
+            Material Widget用於包含不同widgets來呈現Goolge Material設計效果，以下為MaterialApp屬性及屬性對應資料類型，課程僅針對基礎屬性進行說明。
+          </p>
+          <pre><code>
+MaterialApp(
+{Key? key,
+GlobalKey&lt;NavigatorState&gt;? navigatorKey,
+GlobalKey&lt;ScaffoldMessengerState&gt;? scaffoldMessengerKey,
+Widget? home,
+Map&lt;String, WidgetBuilder&gt; routes = const &lt;String, WidgetBuilder&gt;{},
+String? initialRoute,
+RouteFactory? onGenerateRoute,
+InitialRouteListFactory? onGenerateInitialRoutes,
+RouteFactory? onUnknownRoute,
+List&lt;NavigatorObserver&gt; navigatorObservers = const &lt;NavigatorObserver&gt;[],
+TransitionBuilder? builder,
+String title = '',
+GenerateAppTitle? onGenerateTitle,
+Color? color,
+ThemeData? theme,
+ThemeData? darkTheme,
+ThemeData? highContrastTheme,
+ThemeData? highContrastDarkTheme,
+ThemeMode? themeMode = ThemeMode.system,
+Locale? locale,
+Iterable&lt;LocalizationsDelegate&gt;? localizationsDelegates,
+LocaleListResolutionCallback? localeListResolutionCallback,
+LocaleResolutionCallback? localeResolutionCallback,
+Iterable&lt;Locale&gt; supportedLocales = const &lt;Locale&gt;[Locale('en', 'US')],
+bool debugShowMaterialGrid = false,
+bool showPerformanceOverlay = false,
+bool checkerboardRasterCacheImages = false,
+bool checkerboardOffscreenLayers = false,
+bool showSemanticsDebugger = false,
+bool debugShowCheckedModeBanner = true,
+Map<ShortcutActivator, Intent>? shortcuts,
+Map&lt;Type, Action&lt;Intent&gt;&gt;? actions,
+String? restorationScopeId,
+ScrollBehavior? scrollBehavior,
+bool useInheritedMediaQuery = false}
+)         
+          </code></pre>
+          <ul>
+            <li>
+              <span class="text-danger">home</span>：用於設定APP啟示頁面Widget。以下列程式為例，APP為設定並顯示<span class="text-danger">MyHomePage</span>為起始頁面。
+            </li>
+            <pre><code>
+MaterialApp(
+  title: 'Flutter Demo',
+  theme: ThemeData(
+    primarySwatch: Colors.blue,
+  ),
+  home: const MyHomePage(title: 'Flutter Demo Home Page'),
+);
+            </code></pre>
+          </ul>
+          
+        </div>
+        <div class="p-3">
+          <h3 class="text-danger">基本Widgets- Scaffold(鷹架)</h3>
+          <p>
+            Scaffold Widget為Android material design最常用頁面widget並涵蓋不同版面設計如appBar、BottomappBar、Drawer或BottomSheet等widgets版面，Scafold widget讓設計者能快速地進行頁面設計。Scaffold widget屬性如下，置於大括符中屬性並不是都必須設定，接下來我們將對基礎屬性進行說明。
+          </p>
+          <pre><code>
+Scaffold({Key key,
+  PreferredSizeWidget appBar, 
+  Widget body,
+  Widget floatingActionButton,
+  FloatingActionButtonLocation floatingActionButtonLocation,
+  FloatingActionButtonAnimator floatingActionButtonAnimator,
+  List persistentFooterButtons,
+  Widget drawer,
+  Widget endDrawer,
+  Widget bottomNavigationBar,
+  Widget bottomSheet,
+  Color backgroundColor,
+  bool resizeToAvoidBottomPadding: true,
+  bool primary: true })     
+          </code></pre>
+          <ul>
+            <li>
+              <span class="text-danger">body</span>：用於設定Scaffold widget顯示內容位置。
+            </li>
+            <pre><code>
+Scaffold(
+  body: Text('您好嗎'),
+);
+            </code></pre>
+          </ul>
+          
+        </div>
+        <div class="p-3">
+          <h3 class="text-danger">基本Widgets- Text(文字)</h3>
+          <p>
+            Text widget用於顯示文字。Text widgets包含Text與Text.rich widgets，Text widget的文字套用相同文字樣式，而Text.rich widget可對文字設定不同樣式。請注意設定文字可包含特殊符號如<span class="text-danger">\n(強迫跳行)、\t(跳格)</span>等，接下來我們將對基礎屬性進行說明。
+          </p>
+          <pre><code>
+Text(String data,
+  { Key key,
+    TextStyle style,
+    TextAlign textAlign,
+    TextDirection textDirection,
+    Locale locale,
+    bool softWrap,
+    TextOverflow overflow,
+    double textScaleFactor,
+    int maxLines, 
+    String semanticsLabel })   
+          </code></pre>
+          <ul>
+            <li>
+              <span class="text-danger">String data</span>：欲顯示的文字，置於單括號或雙括內。
+            </li>
+            <li>
+              <span class="text-danger">textAlign</span>：使用TextAlign列舉類別包含center(置中)、end(文字方向左到右則靠右，文字方向又到左則靠左)、justify(分散對其)、left(靠左)、right(靠右)、start((文字方向左到右則靠左，文字方向又到左則靠右)。
+            </li>
+            <li>
+              <span class="text-danger">textDirection</span>：利用TextDirection列舉類別，包含ltr(文字左到右)與rtl(文字右到左)。
+            </li>
+            <li>
+              <span class="text-danger">locale</span>：在地化設定，用於設定語言及國家。
+            </li>
+            <li>
+              <span class="text-danger">softWrap</span>：布林值用於設定是否自動跳行。
+            </li>
+            <li>
+              <span class="text-danger">style</span>：利用TextStyle類別來設定文字樣式包含color(顏色)、fontSize(字體大小)、fontWeight(字體粗細)、fontStyle(字體樣式如斜體)、letterSpaceing(字母間距)、wordSpacing(字間距)、textBaseline(文字對齊基準線)、height(行高)、locale(設定本地化語言)、foreground(前景樣式)、background(背景樣式)、decoration(設定底線或刪除線等裝飾)、decorationColor(設定裝飾線顏色)、decorationStyle(設定裝飾線樣式)、debugLabel(除錯狀態樣式說明文字)、fontFamily(字型)與package(套件名稱)。
+            </li>
+            <pre><code>
+  TextStyle({bool inherit: true,
+    Color color,
+    double fontSize,
+    FontWeight fontWeight,
+    FontStyle fontStyle,
+    double letterSpacing,
+    double wordSpacing,
+    TextBaseline textBaseline,
+    double height,
+    Locale locale,
+    Paint foreground,
+    Paint background,
+    TextDecoration decoration,
+    Color decorationColor,
+    TextDecorationStyle decorationStyle,
+    String debugLabel,
+    String fontFamily,
+    String package })
+            </code></pre>
+            <ul>
+              <li>
+                <span class="text-danger">color</span>：用於設定顏色，使用Colors或Color類別。Colors藉由選擇顏色並套用顏色樣本值來設定顏色強度，顏色強度值在0到900之間，例如Colors.green代表預設強度為500的綠色(Colors.green[500])。Color類別則是代入透明度及紅綠藍的16進位值如Color(0xAARRGGBB)，其中AA,RR,GG,BB為16進位數字從00到ff，分別代表透明度與紅綠藍的值(例如Color(0xffff0000)為紅色完全不透明)。使用者也可使用Color.fromARGB(AA,RR,GG,BB)代入透明度與紅綠藍的值，代入值可以是16進位或10進位值。Color.fromRGBO(RR,GG,BB,O)，其中O為透明度，值從0.0到1.0，分別代表完全透明到完全不透明。
+              </li>
+              <li>
+                <span class="text-danger">fontWeight</span>：FontWeight類別用於設定字體粗細，可用normal、bold或w100到w900等常數來設定字體粗細。
+              </li>
+              <li>
+                <span class="text-danger">fontStyle</span>：FontStyle類別，使用normal或italic常數設定正常字體或斜體。
+              </li>
+              <li>
+                <span class="text-danger">textBaseline</span>：TextBaseline類別，用於設定底線對齊，包含alphabetic(文字)與ideographic(表意圖示)兩個常數值。
+              </li>
+              <li>
+                <span class="text-danger">decoration</span>：TextDecoration類別，用於設定lineThrough(刪除線)、overline(上標線)與underline(底線)。
+              </li>
+              <li>
+                <span class="text-danger">decorationStyle</span>：TextDecorationStyle類別，用於設定decoration樣式包含常數dashed(虛線)、dotted(點線)、double(雙線)、solid(實線)與wavy(波浪線)。
+              </li>
+            </ul>
+          </ul>
+          <p>
+            Text widget使用相同的樣式套用於整段文字，當設計者希望將不同的樣式套用於一段文字，則需使用Text.rich widget，Text.rich widget使用TextSpan widget來包含多段不同樣式的文字，TextSpan widget又可包含多個TextSpan widgets，而每個TextSpan均可設定樣式。
+          </p>
+          <pre><code>
+Text.rich(TextSpan textSpan,
+{ Key key,
+  TextStyle style,
+  TextAlign textAlign,
+  TextDirection textDirection,
+  Locale locale,
+  bool softWrap,
+  TextOverflow overflow,
+  double textScaleFactor,
+  int maxLines, 
+  String semanticsLabel })
+  
+TextSpan({TextStyle style,
+  String text,
+  List children,
+  GestureRecognizer recognizer })
+          </code></pre>
+          
+        </div>
+        <div class="p-3">
+          <h3 class="text-danger">基本Widgets- Icon(圖示)</h3>
+          <p>
+            Icon widget用於顯示icon(圖示)，接下來我們將對基礎屬性進行說明。
+          </p>
+          <pre><code>
+Icon(IconData icon,
+{ Key key,
+  double size,
+  Color color,
+  String semanticLabel,
+  TextDirection textDirection })    
+          </code></pre>
+          <ul>
+            <li>
+              <span class="text-danger">IconData icon</span>：設定顯示圖示，圖示請參照Icons類型，設定為 Icons.圖示名稱。
+            </li>
+            <li>
+              <span class="text-danger">size</span>：具小數點的數字，設定圖示大小。
+            </li>
+            <li>
+              <span class="text-danger">color</span>：用於設定顏色，可使用Colors或Color類別。
+            </li>
+            <li>
+              <span class="text-danger">textDirection</span>：設定圖示顯示方向，某些圖示資料類型中IconData.matchTextDirection為true，當設定textDirection時會改變圖示顯示方向(如返回箭頭arrow_back)。
+            </li>
+          </ul>
+          
+        </div>
+        <div class="p-3">
+          <h3 class="text-danger">基本Widgets- Image(圖片)</h3>
+          <p>
+            Image widget用於設定顯示圖片，圖片來源包含本地端資源(asset)、檔案(file)、記憶體(memory)與網路(network)，本單元僅說明如何顯示本地端資源與網路圖片，檔案與記憶體圖片會在後續課程說明。<br/>所謂本地端資源是指將顯示圖片放置於APP project中，因此顯示本地端圖片資源，必先設定本地端圖片來源位置，首先在project的根目錄新增圖片擺放目錄(假設圖片將置於assets/images目錄中，則在project根目錄新增assets資料夾，之後在assets資料夾中再新增images資料夾來放置本地端圖片檔)，最後project需在pubspec.yaml中設定本地端資源位置如圖6。Image.asset widget會根據設備的device pixel ratio(設備像素比例)自動選取對應比例圖片，使用者可在資源目錄(如assets/images)下新增2.0x或3.0x目錄，目錄名稱2.0x或3.0x代表設備的設備像素比例，例如Samsung s9設備像素比例為4，之後再將對應該解析度並具相同檔名的圖檔放在對應目錄中，則Image.asset widget會根據顯示設備的DPR來選擇對應的檔案。接下來我們將對基礎屬性進行說明。
+          </p>
+          <pre><code>
+Image.asset(String name,
+           { Key key,
+           AssetBundle bundle,
+           String semanticLabel,
+           bool excludeFromSemantics: false,
+           double scale,
+           double width,
+           double height,
+           Color color,
+           BlendMode colorBlendMode,
+           BoxFit fit,
+           AlignmentGeometry alignment: Alignment.center,
+           ImageRepeat repeat: ImageRepeat.noRepeat,
+           Rect centerSlice,
+           bool matchTextDirection: false,
+           bool gaplessPlayback: false,
+           String package })   
+          </code></pre>
+          <ul>
+            <li>
+              <span class="text-danger">String name</span>：圖片檔案位置與名稱，假設圖片檔名為sample.jpg，則輸入'assets/images/sample.jpg'。
+            </li>
+            <li>
+              <span class="text-danger">semanticLabel</span>：當載具輔助功能開啟時，用於設定圖片說明文字。
+            </li>
+            <li>
+              <span class="text-danger">excludeFromSemantics</span>：不設定輔助功能文字說明。
+            </li>
+            <li>
+              <span class="text-danger">scale</span>：用於設定圖片顯示比例。
+            </li>
+            <li>
+              <span class="text-danger">width、height</span>：設定圖片顯示寬與高。
+            </li>
+            <li>
+              <span class="text-danger">color</span>：用於設定與圖片進行混色的顏色，與屬性colorBlendMode搭配使用。
+            </li>
+            <li>
+              <span class="text-danger">colorBlendMode</span>：使用BlendMode列舉類別，藉由不同的混合模式，將圖片與顏色設定進行混合。
+            </li>
+            <li>
+              <span class="text-danger">fit</span>：設定圖片填入方式，使用BoxFit列舉類別。包含BoxFit.contain(可顯示整個圖片的最大狀態，不一定能完全填滿)、BoxFit.cover(包含整個顯示區域的最小大小、不一定顯示全部圖片)、BoxFit.fill(用全部圖形填滿區域，可能會造成變形)、BoxFit.fitHeight(優先填滿區域高度，圖片寬度有可能超過)、BoxFit.fitWidth(ht(優先填滿區域寬度，圖片高度有可能超過)、BoxFit.none(預設置中並切除超過區域部分)、BoxFit.scaleDown(預設置中並縮小到在區域中顯示整張圖)。
+            </li>
+            <li>
+              <span class="text-danger">alignment</span>：用於設定內容對齊方式，使用AlignmentGeometry類別並利用兩種不同座標方式進行對齊：FractionalOffset與Alignment，FractionalOffset以容器的左上角為基準，整個容器水平(x)與垂直(y)大小為1，因此將位置設定於右上角為FractionalOffset(0.0,1.0)、將位置設定於容器中心點為FractionalOffset(0.5,0.5)。不同於FractionalOffset，Aligment以容器中心(0.0,0.0)為基準，整個容器上下左右大小均為1，因此將中心位置設定於右上角為Alignment(1.0,-1.0)，將中心位置設定於容器中心點為Alignment(0.0,0.0)，將中心位置設於左下角為Alignment(-1.0,1.0)。
+            </li>
+            <li>
+              <span class="text-danger">repeat</span>：設定圖片重複填入方式，使用ImageRepeat列舉類別。包含ImageRepeat.noRepeat(不重複)、ImageRepeat.repeat(重複X與Y軸)、ImageRepeat.repeatX(重複X軸)、ImageRepeat.repeatY(重複Y軸)。
+            </li>
+            <li>
+              <span class="text-danger">centerSlice</span>：設定部分圖片填入方式，使用Rect類別。Rect類別定義一個涵蓋原圖的方形區域，包含Rect.fromCircle(涵蓋定義圓形區域的最小方形)、Rect.fromLTRB(定義左上右下位置)、Rect.fromLTWH(定義左上寬高，取得左加寬與上加高位置)。
+            </li>
+            <li>
+              <span class="text-danger">matchTextDirection</span>：布林值，用以設定是否依照文字方向繪製圖片，預設值為false。
+            </li>
+            <li>
+              <span class="text-danger">aplessPlayback</span>：布林值，用以設定圖片切換時是否等到新圖形載入後再進行切換，預設值為false，代表切換圖片時元圖片位置顯示空白。
+            </li>
+            <li>
+              <span class="text-danger">String package</span>：如果圖片來自套件(package)，則須設定套件名稱。
+            </li>
+          </ul>
+          
+        </div>
+        
+        
+
+
+      </div>
+    </div>
+
+    <!-- bootstrap js -->
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>  
+    
+    <!-- custom js -->
+    <script>
+      var menu_btn = document.querySelector("#menu-btn");
+      var sidebar = document.querySelector("#sidebar");
+      var container = document.querySelector(".my-container");
+      menu_btn.addEventListener("click", () => {
+        sidebar.classList.toggle("active-nav");
+        container.classList.toggle("active-cont");
+      });
+    </script>
+  </body>
+</html>
