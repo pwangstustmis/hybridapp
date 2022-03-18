@@ -71,7 +71,7 @@
         <h3 class="text-danger p-3">內容涵蓋</h3>
         <p class="px-3" style="margin-top:-20px;">
           <ul>
-            <li>基本Widgets</li>
+            <li>基本Widgets- MaterialApp、Scaffold、Container、Row、Column、Image、Text、Icon</li>
           </ul>
         </p>
         <p class="p-3">
@@ -163,6 +163,46 @@ Scaffold(
 );
             </code></pre>
           </ul>       
+        </div>
+        <div class="p-3">
+          <h3 class="text-danger">基本Widgets- AppBar</h3>
+          <p>
+            AppBar置於APP的最上方，一般用於設定標題列(title)、動作按鈕(actions)與跳頁選單(Tabs)，AppBar widget基本包含三個區塊如下位置示意圖。
+          </p>
+          <p><img src="imgs/basicwidgets/scaffold_appbar.png"></p>
+          <pre><code>
+AppBar({Key key,
+  Widget leading,
+  bool automaticallyImplyLeading: true,
+  Widget title,
+  List actions,
+  Widget flexibleSpace,
+  PreferredSizeWidget bottom,
+  double elevation: 4.0,
+  Color backgroundColor,
+  Brightness brightness,
+  IconThemeData iconTheme,
+  TextTheme textTheme,
+  bool primary: true,
+  bool centerTitle,
+  double titleSpacing: NavigationToolbar.kMiddleSpacing,
+  double toolbarOpacity: 1.0,
+  double bottomOpacity: 1.0 })     
+          </code></pre>
+          <ul>
+            <li>
+              <span class="text-danger">leading</span>：用於設定標題列之前的widget，當屬性automaticallyImplyLeading為false而leading為null時，標題列會占用leading位置，當屬性automaticallyImplyLeading為true而leading為null時，系統會自動設定對應leading widget，如跳頁時會於下一頁leading位置自動加入回上頁圖示按鈕或在Scaffold設定drawer時自動加入menu圖示按鈕。
+            </li>
+            <li>
+              <span class="text-danger">title</span>：用於設定標題列，一般為Text widget。
+            </li>
+            <li>
+              <span class="text-danger">actions</span>：用於動作按鈕，為一Widget陣列。
+            </li>
+          </ul>
+          <p class="text-success">
+            練習：以麥當勞字型為例，請在project中建立assets/fonts檔案夾，並將mclawsui.ttf字型放在fonts檔案夾後，請修改設定檔<span class="text-danger">pubspec.yaml</span>，設定字型名稱為<span class="text-danger">MClawsui</span>並設定字型檔位置後，請在AppBar widget中leading屬性設定麥當勞Logo- <span class="text-danger">m</span> (顏色amber、大小40)
+          </p>       
         </div>
         <div class="p-3">
           <h3 class="text-danger">基本Widgets- Text(文字)</h3>
@@ -426,6 +466,40 @@ BoxDecoration({Color? color,
           
         </div>
         <div class="p-3">
+          <h3 class="text-danger">基本Widgets- IconButton(圖示按鈕)</h3>
+          <p>
+            ElevatedButton widget用於設定平面昇起按鈕，使用者可以透過按鈕執行想要動作。
+          </p>
+          <pre><code>
+IconButton({Key? key,
+    double? iconSize,
+    VisualDensity? visualDensity,
+    EdgeInsetsGeometry padding = const EdgeInsets.all(8.0),
+    AlignmentGeometry alignment = Alignment.center,
+    double? splashRadius,
+    Color? color,
+    Color? focusColor,
+    Color? hoverColor,
+    Color? highlightColor,
+    Color? splashColor,
+    Color? disabledColor,
+    required VoidCallback? onPressed,
+    MouseCursor? mouseCursor,
+    FocusNode? focusNode,
+    bool autofocus = false,
+    String? tooltip,
+    bool enableFeedback = true,
+    BoxConstraints? constraints,
+    required Widget icon})   
+          </code></pre>
+          <ul>
+            <li>
+              <span class="text-danger">onPressed</span>：用於設定執行動作，如果讓按鈕無作用，請設定<span class="text-danger">null</span>。
+            </li>
+          </ul>
+          <p class="text-success">練習：請在AppBar中actions屬性設定圖示按鈕(圖示為alert)，圖示大小30、同時設highlightColor與splashColor為透明。</p>  
+        </div>
+        <div class="p-3">
           <h3 class="text-danger">基本Widgets- ElevatedButton(昇起按鈕)</h3>
           <p>
             ElevatedButton widget用於設定平面昇起按鈕，使用者可以透過按鈕執行想要動作。
@@ -462,7 +536,7 @@ ElevatedButton(
         <div class="p-3">
           <h3 class="text-danger">基本Widgets- Row(列)、Column(欄)</h3>
           <p>
-            Row(列)、Column(欄) widget為版面設定Widgets，用於以橫向或縱向擺放多個widgets。
+            Row(列)、Column(欄) widget為版面設定Widgets，用於以橫向或縱向擺放多個widgets，列與欄最多占整個頁面，如果內容超過頁面，會造成溢位情況，這時就必須搭配捲動版面。
           </p>
           <pre><code>
 Row({Key key, MainAxisAlignment mainAxisAlignment: MainAxisAlignment.start,
@@ -522,7 +596,69 @@ Expanded({Key? key,
           </ul>
           
         </div>
-        
+        <div class="p-3">
+          <h3 class="text-danger">基本Widgets- SingleChildScrollView(單一內容捲動頁面)</h3>
+          <p>
+            SingleChildScrollView widget用於捲動單一內容。
+          </p>
+          <pre><code>
+SingleChildScrollView(
+  {Key? key,
+  Axis scrollDirection = Axis.vertical,
+  bool reverse = false,
+  EdgeInsetsGeometry? padding,
+  bool? primary,
+  ScrollPhysics? physics,
+  ScrollController? controller,
+  Widget? child,
+  DragStartBehavior dragStartBehavior = DragStartBehavior.start,
+  Clip clipBehavior = Clip.hardEdge,
+  String? restorationId,
+  ScrollViewKeyboardDismissBehavior keyboardDismissBehavior = ScrollViewKeyboardDismissBehavior.manual}
+  )     
+          </code></pre>
+
+          
+        </div>
+        <div class="p-3">
+          <h3 class="text-danger">麥當勞APP頁面設計</h3>
+          <p>
+            <img src="imgs/basicwidgets/mac-1.PNG" width="33%">
+            <img src="imgs/basicwidgets/mac-2.PNG" width="33%">
+            <img src="imgs/basicwidgets/mac-3.PNG" width="33%">
+          </p>
+          <p>
+            版面設計：麥當勞APP首頁版面(由上而下排列):
+            <ul>
+              <li>
+                MaterialApp
+                <ul>
+                  <li>
+                    Scaffold
+                    <ul>
+                      <li>
+                        AppBar
+                        <ul>
+                          <li>
+                            Text
+                          </li>
+                          <li>
+                            IconButton
+                          </li>
+                          <li>
+                            IconButton
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              
+            </ul>
+          </p>
+
+        </div>
 
 
       </div>
