@@ -72,6 +72,7 @@
         <p class="px-3" style="margin-top:-20px;">
           <ul>
             <li>基本Widgets- MaterialApp、Scaffold、Container、Row、Column、Image、Text、Icon</li>
+            <li>麥當勞最新(2022)APP頁面設計</li>
           </ul>
         </p>
         <p class="p-3">
@@ -616,9 +617,54 @@ SingleChildScrollView(
   String? restorationId,
   ScrollViewKeyboardDismissBehavior keyboardDismissBehavior = ScrollViewKeyboardDismissBehavior.manual}
   )     
-          </code></pre>
-
-          
+          </code></pre>        
+        </div>
+        <div class="p-3">
+          <h3 class="text-danger">基本Widgets- ButtonNavigationBar(底部導覽列)</h3>
+          <p>
+            用於設定頁面底部導覽列。
+          </p>
+          <pre><code>
+BottomNavigationBar(
+  {Key? key,
+  required List<BottomNavigationBarItem> items,
+  ValueChanged<int>? onTap,
+  int currentIndex = 0,
+    double? elevation,
+  BottomNavigationBarType? type,
+  Color? fixedColor,
+  Color? backgroundColor,
+  double iconSize = 24.0,
+  Color? selectedItemColor,
+  Color? unselectedItemColor,
+  IconThemeData? selectedIconTheme,
+  IconThemeData? unselectedIconTheme,
+  double selectedFontSize = 14.0,
+  double unselectedFontSize = 12.0,
+  TextStyle? selectedLabelStyle,
+  TextStyle? unselectedLabelStyle,
+  bool? showSelectedLabels,
+  bool? showUnselectedLabels,
+  MouseCursor? mouseCursor,
+  bool? enableFeedback,
+  BottomNavigationBarLandscapeLayout? landscapeLayout}
+)    
+          </code></pre>        
+        </div>
+        <div class="p-3">
+          <h3 class="text-danger">基本Widgets- ButtonNavigationBarItem(底部導覽列項目)</h3>
+          <p>
+            用於設定頁面底部導覽列項目。
+          </p>
+          <pre><code>
+const BottomNavigationBarItem(
+  {required Widget icon,
+  String? label,
+  Widget? activeIcon,
+  Color? backgroundColor,
+  String? tooltip}
+)   
+          </code></pre>        
         </div>
         <div class="p-3">
           <h3 class="text-danger">麥當勞APP頁面設計</h3>
@@ -628,33 +674,19 @@ SingleChildScrollView(
             <img src="imgs/basicwidgets/mac-3.PNG" width="33%">
           </p>
           <p>
-            版面設計：麥當勞APP首頁版面(由上而下排列):
             <ul>
               <li>
-                MaterialApp
-                <ul>
-                  <li>
-                    Scaffold
-                    <ul>
-                      <li>
-                        AppBar
-                        <ul>
-                          <li>
-                            Text
-                          </li>
-                          <li>
-                            IconButton
-                          </li>
-                          <li>
-                            IconButton
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
+                <span class="text-danger">appBar</span>：在Scaffold widget中AppBar widget的<span class="text-danger">title</span>設外部字型顯示麥當勞 m，<span class="text-danger">actions</span>中設定兩個<span class="text-danger">IconButton</span>
               </li>
-              
+              <li>
+                <span class="text-danger">body</span>：在Scaffold widget中body屬性先設定<span class="text-danger">SingleChildScrollView widget</span>，在<span class="text-danger">SingleChildScrollView widget的child屬性</span>設<span class="text-danger">Column widget</span>，在<span class="text-danger">Column widget的children屬性</span>第一個小孩使用<span class="text-danger">Text widget</span>顯示第一列字，第二個小孩套用<a href="https://pub.dev/packages/carousel_slider" target="_blank">Carousel slider</a>套件。
+              </li>
+              <li>
+                <span class="text-danger">Column widget</span>第三個小孩設定水平<span class="text-danger">SingleChildScrollView widget</span>，在<span class="text-danger">SingleChildScrollView widget的child屬性</span>設<span class="text-danger">Row widget</span>，在<span class="text-danger">Row widget的children屬性</span>的每個小孩設定<span class="text-danger">Column widget</span>，Column widget的每個小孩則包含<span class="text-danger">IconButton、Text、Text</span>。
+              </li>
+              <li>
+                <span class="text-danger">Column widget</span>最後小孩設定<span class="text-danger">ButtonNavigationBar widget</span>，1包含<span class="text-danger">ButtonNavigationBarItem widget的child屬性</span>設<span class="text-danger">Row widget</span>，在<span class="text-danger">Row widget的children屬性</span>的每個小孩設定<span class="text-danger">Column widget</span>，Column widget的每個小孩則包含<span class="text-danger">IconButton、Text、Text</span>。
+              </li>
             </ul>
           </p>
 
