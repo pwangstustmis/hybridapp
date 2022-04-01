@@ -119,17 +119,48 @@
         <p class="p-3" style="margin-top:-30px;">Mac OS軟體安裝分為Flutter SDK安裝、安裝Xcode、模擬器安裝、Android版權確認與Flutter doctor，作業系統為Mac OS、硬碟需2.8GB以上硬碟空間。</p>
         <ul>
           <li>
-            安裝Flutter SDK：下載<a href="https://docs.flutter.dev/get-started/install/macos" target="_blank">Flutter MacOS SDK</a>。<br/>開啟terminal應用程式，並利用mkdir來建立flutter SDK放置的目錄(如mkdir development)。<br/>在terminal中輸入flutter SDK檔案夾(如cd development)，接著輸入 cp -r ~/Downloads/flutter .，它會將整個下載flutter檔案夾複製至flutter SDK檔案夾。之後輸入cd並按下輸入鍵回到根目錄。<br/>在terminal中輸入 nano .bash_profile<br/>輸入 export PATH="$PATH:/Users/使用者帳號/flutter SDK目錄/flutter/bin"，之後按下 Ctrl+O儲存檔案，按下Ctrl+X離開nano編輯器，之後在terminal中輸入chmod 700 .bash_profile後按下輸入鍵，同時關閉並重新開啟terminal後，輸入 echo $PATH來確認flutter/bin路徑在PATH中。<p></p>
+            安裝Flutter SDK：
+            <ol>
+              <li>
+                下載<a href="https://docs.flutter.dev/get-started/install/macos" target="_blank">Flutter MacOS SDK</a>。
+              </li>
+              <li>
+                開啟terminal應用程式，並利用mkdir來建立flutter SDK放置的目錄(如mkdir development)。
+              </li>
+              <li>
+                在terminal中輸入flutter SDK檔案夾(如cd development)，接著輸入<text class="text-danger">cp -r ~/Downloads/flutter .</text>，它會將整個下載flutter檔案夾複製至flutter SDK檔案夾。之後輸入<text class="text-danger">cd</text>並按下輸入鍵回到根目錄。
+              </li>
+              <li>
+                在terminal中輸入<span class="text-danger">nano .bash_profile</span>，接下來在.bsah_profile中輸入<span class="text-danger">export PATH="$PATH:/Users/使用者帳號/flutter SDK目錄/flutter/bin"</span>後，按下 Ctrl+O儲存檔案，按下Ctrl+X離開nano編輯器。
+              </li>
+              <li>
+                在terminal中輸入<span class="text-danger">chmod 700 .bash_profile</span>後按下輸入鍵，同時關閉並重新開啟terminal後，輸入<span class="text-danger">echo $PATH</span>來確認flutter/bin路徑在PATH中。
+              </li>
+            </ol>
           </li>
           <li>
-            安裝Xcode：下載並安裝Xcode，安裝完畢後請在terminal應用程式中輸入<br/>sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer<br/>sudo xcodebuild -runFirstLaunch<br/> sudo xcodebuild -license<br/><p></p>
+            安裝Xcode：
+            <ol>
+              <li>下載並安裝Xcode，安裝完畢後請在terminal應用程式中輸入下列命令：</li>
+              <li>
+                <span class="text-danger">sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer</span>
+              </li>
+              <li>
+                <span class="text-danger">sudo xcodebuild -runFirstLaunch</span>
+              </li>
+              <li>
+                <span class="text-danger">sudo xcodebuild -license</span>
+              </li>
+            </ol>
           </li>
           <li>
             安裝cocoapods用於取的iOS平台Flutter套件，請在terminal應用程式中輸入<br/>sudo gem install cocoapods
           </li>
+          <li>
+            安裝完畢後，請在terminal應用程式中輸入<span class="text-danger">flutter doctor</span>來檢查Flutter的開發設定，同時請不定期在terminal應用程式中輸入<span class="text-danger">flutter upgrade</span>來升級Flutter SDK。
+          </li>
         </ul>
         <h5 class="text-success p-3">Mac OS平台第一個Flutter project</h5>
-        <p class="p-3">
           <ul>
             <li>
               開啟terminal應用程式進入project目錄
@@ -147,7 +178,6 @@
               輸入 flutter run 將project執行於iOS模擬器(如下圖)，使用者可使用Xcode進行project編輯
             </li>
           </ul>
-        </p>
         <img src="imgs/introduction/maciPhoneX.png" class="p-3"/>
       </div>
     </div>
