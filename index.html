@@ -20,25 +20,17 @@
         <li class="mx-2">
           <span class="menuitem"><a href="index.html" class="nav-link">簡介與軟體安裝</a></span>
         </li>
-        <li class="nav-item">
-          <div class="nav-link" href="#topic1" class="nav-item" data-bs-toggle="collapse" aria-expanded="false" aria-controls="topic1">
-            <span class="mx-2">第一個專案</span>
-            <i class="fas fa-angle-right"></i>
-          </div>
-          <div class="collapse" id="topic1">
-            <ul>
-              <li class="menuitem"><a class="nav-link" href="firstapp_1.html">專案檔案架構</a></li>
-            </ul>
-            <ul>
-              <li class="menuitem"><a class="nav-link" href="firstapp_3.html">頁面架構</a></li>
-            </ul>
-            <ul>
-              <li class="menuitem"><a class="nav-link" href="firstapp_2.html">專案程式說明</a></li>
-            </ul>           
-            <ul>
-              <li class="menuitem"><a class="nav-link" href="firstapp_4.html">Dart語言</a></li>
-            </ul>
-          </div>
+        <li class="mx-2">
+          <span class="menuitem"><a href="dart.html" class="nav-link">Dart語言</a></span>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a class="nav-link" href="firstapp_1.html">專案檔案架構</a></span>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a class="nav-link" href="firstapp_2.html">專案程式說明</a></span>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a class="nav-link" href="firstapp_3.html">頁面架構</a></span>
         </li>
         <li class="nav-item">
           <div class="nav-link" href="#topic2" class="nav-item" data-bs-toggle="collapse" aria-expanded="false" aria-controls="topic2">
@@ -52,7 +44,7 @@
           </div>
         </li>
         <li class="mx-2">
-          <span class="menuitem"><a href="navigator_route.html" class="nav-link">導覽與路由</a></span>
+          <span class="menuitem"><a href="navigator_route.html" class="nav-link">導覽</a></span>
         </li>     
       </ul>
     </div>
@@ -112,7 +104,7 @@
           </li>
         </ul>
         <h5 class="text-success p-3">Windows平台第一個Flutter project</h5>
-        <p class="p-3">在Android Studio請選擇 New Flutter project，接下來確定Flutter SDK位置、設定Flutter project name(名稱)、organization(反轉domain name如tw.edu.stust.mis)及platforms(開發平台)後點選 finish 建立project。project建立後，請開啟模擬器並點選執行按鈕，結果如下圖：</p>
+        <p class="p-3">在Android Studio請選擇 New Flutter project，接下來確定Flutter SDK位置、設定Flutter project name(名稱)、organization(反轉domain name如tw.edu.stust.mis)及platforms(開發平台)後點選 finish 建立project。project建立後，請開啟模擬器並點選執行按鈕，結果如下圖。實機測試請開啟Android手機<span class="text-danger">開發人員模式中USB偵錯</span>，之後將手機接上電腦，等待電腦連上手機後點選執行即可。</p>
         <img src="imgs/introduction/wintestapp.png" class="p-3"/>
         
         <h5 class="text-success p-3">Mac OS安裝</h5>
@@ -172,10 +164,10 @@
               輸入 cd PROJECT名稱 進入project目錄(如 cd testapp)
             </li>
             <li>
-              輸入 open -a Simulator 開啟模擬器
+              輸入 <span class="text-danger">open -a Simulator</span> 開啟模擬器
             </li>
             <li>
-              輸入 flutter run 將project執行於iOS模擬器(如下圖)，使用者可使用Xcode進行project編輯
+              輸入 <span class="text-danger">flutter run</span> 將project執行於iOS模擬器(如下圖)，使用者可使用Xcode進行project編輯與實機測試。
             </li>
           </ul>
         <img src="imgs/introduction/maciPhoneX.png" class="p-3"/>

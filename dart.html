@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flutter</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+
+    <!-- Side-Nav -->
+    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column" id="sidebar">
+      <ul class="nav flex-column text-white w-100">
+        <li class="nav-item" style="background-color: #fff;padding-left:10px;padding-top:10px;border-bottom: rgb(255, 115, 0) 2px solid;font-size: 16pt;">
+          <p style="color:rgb(248, 138, 11);font-weight: 700;">Flutter<br/>跨平台行動程式進階應用開發</p>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a href="index.html" class="nav-link">簡介與軟體安裝</a></span>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a href="dart.html" class="nav-link">Dart語言</a></span>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a class="nav-link" href="firstapp_1.html">專案檔案架構</a></span>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a class="nav-link" href="firstapp_2.html">專案程式說明</a></span>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a class="nav-link" href="firstapp_3.html">頁面架構</a></span>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link" href="#topic2" class="nav-item" data-bs-toggle="collapse" aria-expanded="false" aria-controls="topic2">
+            <span class="mx-2">Widgets控制項</span>
+            <i class="fas fa-angle-right"></i>
+          </div>
+          <div class="collapse" id="topic2">
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="basicwidgets.html">基本Widgets</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a href="navigator_route.html" class="nav-link">導覽</a></span>
+        </li>     
+      </ul>
+    </div>
+
+
+    <!-- Main Wrapper -->
+    <div class="p-2 my-container active-cont">
+      <!-- Breadcrumb -->
+      <div class="bg-light px-5" aria-label="breadcrumb" style="height:40px;position:fixed;width:100%;top:0;">
+        <a class="btn border-0" id="menu-btn" style="position:fixed"><i class="fas fa-bars"></i></a>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">Dart語言</li>
+        </ol>
+      </div>
+      <!--End Top Nav -->
+
+      <!-- main page -->
+      <div style="margin-top:50px;">
+        <h3 class="text-danger p-3">內容涵蓋</h3>
+        <p class="px-3" style="margin-top:-20px;">
+          <ul>
+            <li>語法、資料類型</li>
+            <li>運算子(operator)</li>
+            <li>條件</li>
+            <li>迴圈</li>
+            <li>函數</li>
+            <li>物件導向-類別(class)、封裝(encapsulation)、介面(interface)、抽象類別(abstract class)</li>
+            <li>null safety(空值確認)</li>
+          </ul>
+        </p>
+        <div class="p-3">
+          <h3 class="text-danger">語法、變數、資料類型</h3>
+          <p>
+            Flutter使用Dart語言作為開發工具，Dart為Google開發前端物件導向語言，使用者可以利用線上練習工具<a href="https://dartpad.dev/?" target="_blank">DartPad</a>在線上練習Dart語言。Dart程式語法類似Java，變數大小寫不同，資料類型包含<span class="text-danger">var(變數宣告)、int(整數)、double(有小數)、String(字串)、bool(布林值)、dynamic(動態)、List(陣列)、Set(集合)、Map(對應)</span>以下僅介紹<span class="text-danger">var(變數宣告)、dynamic(動態)、List(陣列)、Set(集合)、Map(對應)</span>。Dart不允許變數為空值(null)，如果使用者在宣告變數允許變數為空值時，必須在資料類型後加上<span class="text-danger">?</span>，例如<span class="text-danger">int? a;</span>
+            <ul>
+              <li>
+                <span class="text-danger">var</span>：變數會依照後面的資料型態自動判斷，可以設定新值，但是資料類型要與原先設定相同。
+                <pre><code>
+var a="123";
+a="book";
+                </code></pre>             
+              </li>
+              <li>
+                <span class="text-danger">dynamic</span>：動態類型，不同於<span class="text-danger">var</span>資料類型，變數可以設定新值或不同資料類型值。
+                <pre><code>
+dynamic a=123;
+a="book";
+                </code></pre>         
+              </li>
+              <li>
+                <span class="text-danger">List&lt;資料類型&gt;</span>：清單類型，清單類型設定分為兩種：<span class="text-danger">固定大小與變動大小</span>。固定大小清單在程式執行時不能改變清單大小。
+                <pre><code>
+var a=new List&lt;int&gt;.filled(5,0); //產生5個值為0的定大小清單
+print(a);
+var b=&lt;int&gt;[]; //產生變動大小清單，藉由add新增元素
+b.add(1);
+print(b);
+                </code></pre>         
+              </li>
+              <li>
+                <span class="text-danger">Set</span>：集合類型，集合值包含於大括符中，集合可使用<span class="text-danger">in</span>運算子判斷元素是否在集合中。
+                <pre><code>
+var a=&lt;int&gt;{}; //整數類型集合
+a.add(1);
+print(a);
+                </code></pre>         
+              </li>
+              <li>
+                <span class="text-danger">Map(對應)</span>，對應資料類型為一物件定義鍵(key)與值(value)對應。
+              </li>
+              <pre><code>
+void main() {
+  var map1={'name':'甲','phone':'1234567'};
+  print(map1['name']);
+  var map2=new Map<String,dynamic>();
+  map2['id']=1;
+  map2['address']='南台街1號';
+  print(map2);
+}
+              </code></pre>
+            </ul>
+          </p>
+        </div>
+        <div class="p-3">
+          <h3 class="text-danger">運算子(operators)</h3>
+          <p>
+            運算子(operator)用於變數與值的運算，常用運算子包含計算、設定、比較、邏輯、隸屬等，接下來每個類別進行介紹。
+            </p>
+            <ul>
+                <li>
+                    計算運算子 <span class="text-danger">+、-、*、/、%、++、--</span> ，除了加、減、乘、除之外， % 代表求餘數， ++ 代表增加1簡寫，-- 代表減少1簡寫。
+                </li>
+                <li>
+                    設定運算子 <span class="text-danger">=、+=、-=、*=、/=、%=、??=</span> ，用於變數設定表示，以 x+=5為例，他代表 x=x+5，<span class="text-danger">??=</span>會檢查變數是否為<span class="text-danger">null</span>，如果是會進行設定。
+                <pre><code>
+var a;
+a??=1;
+print(a); //印出1
+
+var b=10;
+b??=1;
+print(b); //印出10
+                </code></pre>
+                </li>
+                <li>
+                    比較運算子 <span class="text-danger">==、!=、&gt;、&gt;=、&lt;、&lt;=</span> ，用於條件比較分別為 等於、不等於、大於、大於等於、小於、小於等於。
+                </li>
+                <li>
+                    邏輯運算子 <span class="text-danger">&&、||、!</span> ，用於串接多個條件比較分別為 且、或、否定。
+                </li>
+            </ul>         
+        </div>
+        <div class="p-3">
+          <h3 class="text-danger">條件- if, switch case</h3>
+          <p>
+            if條件命令包含 <span class="text-danger">if、if else、if ... else if ... else</span>，三長分別為一個條件動作、兩個條件動作與多個條件動作。
+          </p>
+          <pre><code>
+//if
+if (1&lt;2) {
+  print("1小於2");
+}
+//if else
+if (1&lt;2) {
+  print("1小於2");
+} else {
+  print("1不小於2");
+}
+//if else if else
+if (1&gt;2) {
+  print("1大於2");
+} else if (1==2) {
+  print("1等於2");
+} else {
+  print("1小於2");
+}
+          </code></pre>
+          <p>
+              C# swicth執行多條件命令。
+          </p>
+          <pre><code>
+//swicth 每個值至於 case之後，default為所有條件不滿足，每個動作需加break
+int x=1;
+switch (x) {
+  case 3:
+    print("x為3");
+    break;
+  case 2:
+    print("x為2");
+    break;
+  default:
+    print("x不為2或3");
+    break;
+}
+          </code></pre>
+      </div>
+      <div class="p-3">
+          <h3 class="text-danger">迴圈</h3>
+          <p>
+              迴圈命令包含 <span class="text-danger">while、do while、for、for ... in、forEach</span>，while、do while差別 <span class="text-danger">結束條件在一開始或結束條件在最後</span>，for迴圈使用方式 <span class="text-danger">for (資料類型 變數=起始值;變數結束條件設定;變數增加值設定)</span>，<span class="text-danger">for (資料類型 變數 in 清單或集合變數)</span>，forEach用於清單或集合，<span class="text-danger">清單或集合變數.forEach((變數類型 元素變數){})</span>。
+          </p>
+          <pre><code>
+//while印出1到10數字
+int i=1;
+while (i&lt;=10) {
+  print(i);
+  i=i+1;
+}
+
+//do while印出1到10數字
+i=1;
+do {
+  print(i);
+  i=i+1;
+} while (i&lt;=10);
+
+//for印出1到10數字
+for (i=1;i&lt;=10;i++) {
+  print(i);
+}
+
+//foreach印出陣列包含1到10元素
+var j=[1,2,3,4,5,6,7,8,9,10];
+j.forEach((int k) {
+  print(k);
+});
+          </code></pre>
+      </div>
+      <div class="p-3">
+        <h3 class="text-danger">函數</h3>
+        <p>
+            函數定義為 <span class="text-danger">函數傳回資料類型 函數名稱(資料類型 代入變數)</span>，函數可以有許多代入值，如果有傳回值則使用 <span class="text-danger">return 傳回值</span>，如果沒有傳回值，函數傳回資料類型請設為，<span class="text-danger">void</span>，Dart允許選擇性代入參數，選擇性代入參數會放在非選擇性代入參數之後，用方括號括起，如果沒有代入值，變數值為null。
+        </p>
+        <pre><code>
+//函數func1沒有代入值、沒有傳回值並印出Hello
+void func1(int a,[int? b,int? c]) {
+  print(a);
+  print(b);
+  print(c);
+}
+void main() {
+  func1(10); //印出 10 null null
+}
+        </code></pre>
+    </div>
+    <div class="p-3">
+      <h3 class="text-danger">物件導向-類別(class)、封裝(encapsulation)、介面(interface)、抽象類別(abstract class)</h3>
+      <p>
+        物件導向程式利用物件來解決問題，而<span class="text-danger">類別(class)</span>為物件的抽象描述，他描述並定義物件的屬性與方法，使用者可以想像<span class="text-danger"> 類別為物件的定義，而物件為類別的實現</span>，另外使用者可以想像：類別就像建造房屋的藍圖，而房屋就是藍圖的實現。類別定義包含<span class="text-danger">類別名稱、屬性、方法</span>，屬性是用於描述對應類別特性，而方法是定義類別可執行的動作。
+      </p>
+      <pre><code>
+import 'dart:math';
+
+class Point {
+  final double x;  //屬性
+  final double y;
+        
+  Point(this.x, this.y); //建構式       
+  double distanceTo(Point other) {  //方法
+    var dx = x - other.x;
+    var dy = y - other.y;
+    return sqrt(dx * dx + dy * dy);
+  }
+}
+
+class Television {
+  void turnOn() {
+    _illuminateDisplay();
+    _activateIrSensor();
+  }
+  set contrast(int value) {...}
+}
+class SmartTelevision extends Television { //使用extends繼承Television類別
+  void turnOn() { //方法隱藏並使用super呼叫父類別Television中turnOn方法
+    super.turnOn();
+    _bootNetworkInterface();
+    _initializeMemory();
+    _upgradeApps();
+  }
+  @override
+  set contrast(num value) {...} //覆寫父類別Televison屬性contrast設定
+}
+
+
+abstract class Doer { //定義抽象類別
+
+  void doSomething(); 
+}
+
+class EffectiveDoer extends Doer { //繼承抽象類別並實作方法
+  void doSomething() {
+    
+  }
+}
+      </code></pre>
+
+
+
+      </div>
+        
+        
+
+
+      </div>
+    </div>
+
+    <!-- bootstrap js -->
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>  
+    
+    <!-- custom js -->
+    <script>
+      var menu_btn = document.querySelector("#menu-btn");
+      var sidebar = document.querySelector("#sidebar");
+      var container = document.querySelector(".my-container");
+      menu_btn.addEventListener("click", () => {
+        sidebar.classList.toggle("active-nav");
+        container.classList.toggle("active-cont");
+      });
+    </script>
+  </body>
+</html>

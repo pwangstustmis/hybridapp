@@ -13,49 +13,41 @@
 
     <!-- Side-Nav -->
     <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column" id="sidebar">
-        <ul class="nav flex-column text-white w-100">
-          <li class="nav-item" style="background-color: #fff;padding-left:10px;padding-top:10px;border-bottom: rgb(255, 115, 0) 2px solid;font-size: 16pt;">
-            <p style="color:rgb(248, 138, 11);font-weight: 700;">Flutter<br/>跨平台行動程式進階應用開發</p>
-          </li>
-          <li class="mx-2">
-            <span class="menuitem"><a href="index.html" class="nav-link">簡介與軟體安裝</a></span>
-          </li>
-          <li class="nav-item">
-            <div class="nav-link" href="#topic1" class="nav-item" data-bs-toggle="collapse" aria-expanded="false" aria-controls="topic1">
-              <span class="mx-2">第一個專案</span>
-              <i class="fas fa-angle-right"></i>
-            </div>
-            <div class="collapse" id="topic1">
-              <ul>
-                <li class="menuitem"><a class="nav-link" href="firstapp_1.html">專案檔案架構</a></li>
-              </ul>
-              <ul>
-                <li class="menuitem"><a class="nav-link" href="firstapp_3.html">頁面架構</a></li>
-              </ul>
-              <ul>
-                <li class="menuitem"><a class="nav-link" href="firstapp_2.html">專案程式說明</a></li>
-              </ul>           
-              <ul>
-                <li class="menuitem"><a class="nav-link" href="firstapp_4.html">Dart語言</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item">
-            <div class="nav-link" href="#topic2" class="nav-item" data-bs-toggle="collapse" aria-expanded="false" aria-controls="topic2">
-              <span class="mx-2">Widgets控制項</span>
-              <i class="fas fa-angle-right"></i>
-            </div>
-            <div class="collapse" id="topic2">
-              <ul>
-                <li class="menuitem"><a class="nav-link" href="basicwidgets.html">基本Widgets</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="mx-2">
-            <span class="menuitem"><a href="navigator_route.html" class="nav-link">導覽與路由</a></span>
-          </li>     
-        </ul>
-      </div>
+      <ul class="nav flex-column text-white w-100">
+        <li class="nav-item" style="background-color: #fff;padding-left:10px;padding-top:10px;border-bottom: rgb(255, 115, 0) 2px solid;font-size: 16pt;">
+          <p style="color:rgb(248, 138, 11);font-weight: 700;">Flutter<br/>跨平台行動程式進階應用開發</p>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a href="index.html" class="nav-link">簡介與軟體安裝</a></span>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a href="dart.html" class="nav-link">Dart語言</a></span>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a class="nav-link" href="firstapp_1.html">專案檔案架構</a></span>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a class="nav-link" href="firstapp_2.html">專案程式說明</a></span>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a class="nav-link" href="firstapp_3.html">頁面架構</a></span>
+        </li>
+        <li class="nav-item">
+          <div class="nav-link" href="#topic2" class="nav-item" data-bs-toggle="collapse" aria-expanded="false" aria-controls="topic2">
+            <span class="mx-2">Widgets控制項</span>
+            <i class="fas fa-angle-right"></i>
+          </div>
+          <div class="collapse" id="topic2">
+            <ul>
+              <li class="menuitem"><a class="nav-link" href="basicwidgets.html">基本Widgets</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a href="navigator_route.html" class="nav-link">導覽</a></span>
+        </li>     
+      </ul>
+    </div>
 
 
     <!-- Main Wrapper -->
@@ -282,6 +274,101 @@ class _Page2State extends State<Page2> {
             <h3 class="text-danger">頁面路由導覽(route)</h3>
             <p>
               不同於上述方法使用<span class="text-danger">Navigator.push()</span>來進行跳頁，本節內容將使用路由名稱並藉由<span class="text-danger">Navigator.pushNamed()、Navigator.pop()</span>來執行頁面導覽跳頁(Navigator)，執行步驟如下：
+              <ul>
+                  <li>建立兩個頁面，在第一頁<span class="text-danger">MaterialApp widget</span>設定路由資訊<span class="text-danger">initialRoute，routes</span>，請注意：使用路由<span class="text-danger">initialRoute</span>，<span class="text-danger">MaterialApp widget</span>不可設定home屬性。</li>
+                  <li>利用<span class="text-danger">Navigator.pushNamed()</span>進行跳頁，並將資料代入路由</li>
+                  <li>利用<span class="text-danger">Navigator.pop(context)</span>回上頁。</li>
+                  <pre><code>
+import 'package:flutter/material.dart';
+import 'package:navapp/page2.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      initialRoute: "/",
+      routes: {
+        "/":(context)=>const MyHomePage(),
+        "/Page2":(context)=>const Page2()
+      },
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("第一頁"),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async{
+          Navigator.pushNamed(context, "/Page2");
+        },
+        child: const Icon(Icons.arrow_right_outlined),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+                  </code></pre>
+                  <pre><code>
+import 'package:flutter/material.dart';
+
+class Page2 extends StatefulWidget {
+  const Page2({Key? key}) : super(key: key);
+
+  @override
+  State<Page2> createState() => _Page2State();
+}
+
+class _Page2State extends State<Page2> {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("第二頁"),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          Navigator.pop(context);
+        },
+        child: const Icon(Icons.arrow_left_outlined),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+                  </code></pre>
+              </ul>
+            </p>
+            
+            
+          </div>
+          <div class="p-3">
+            <h3 class="text-danger">頁面路由跳頁(Navigator)並傳送與回傳資料</h3>
+            <p>
+              透過<span class="text-danger">MaterialApp</span> widget的<span class="text-danger">onGenerateRoute</span>動態取得路由資訊再進行跳頁，<span class="text-danger">onGenerateRoute</span>會傳回<span class="text-danger">RouteSetting</span>物件包含路由名稱(name)與代入參數arguments
+              ，並且在接收頁面使用執行步驟如下：
               <ul>
                   <li>建立兩個頁面，在第一頁<span class="text-danger">MaterialApp widget</span>設定路由資訊<span class="text-danger">initialRoute，routes</span>，請注意：使用路由<span class="text-danger">initialRoute</span>，<span class="text-danger">MaterialApp widget</span>不可設定home屬性。</li>
                   <li>利用<span class="text-danger">Navigator.pushNamed()</span>進行跳頁，並將資料代入路由</li>

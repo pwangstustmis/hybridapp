@@ -20,25 +20,17 @@
         <li class="mx-2">
           <span class="menuitem"><a href="index.html" class="nav-link">簡介與軟體安裝</a></span>
         </li>
-        <li class="nav-item">
-          <div class="nav-link" href="#topic1" class="nav-item" data-bs-toggle="collapse" aria-expanded="false" aria-controls="topic1">
-            <span class="mx-2">第一個專案</span>
-            <i class="fas fa-angle-right"></i>
-          </div>
-          <div class="collapse" id="topic1">
-            <ul>
-              <li class="menuitem"><a class="nav-link" href="firstapp_1.html">專案檔案架構</a></li>
-            </ul>
-            <ul>
-              <li class="menuitem"><a class="nav-link" href="firstapp_3.html">頁面架構</a></li>
-            </ul>
-            <ul>
-              <li class="menuitem"><a class="nav-link" href="firstapp_2.html">專案程式說明</a></li>
-            </ul>           
-            <ul>
-              <li class="menuitem"><a class="nav-link" href="firstapp_4.html">Dart語言</a></li>
-            </ul>
-          </div>
+        <li class="mx-2">
+          <span class="menuitem"><a href="dart.html" class="nav-link">Dart語言</a></span>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a class="nav-link" href="firstapp_1.html">專案檔案架構</a></span>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a class="nav-link" href="firstapp_2.html">專案程式說明</a></span>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a class="nav-link" href="firstapp_3.html">頁面架構</a></span>
         </li>
         <li class="nav-item">
           <div class="nav-link" href="#topic2" class="nav-item" data-bs-toggle="collapse" aria-expanded="false" aria-controls="topic2">
@@ -52,7 +44,7 @@
           </div>
         </li>
         <li class="mx-2">
-          <span class="menuitem"><a href="navigator_route.html" class="nav-link">導覽與路由</a></span>
+          <span class="menuitem"><a href="navigator_route.html" class="nav-link">導覽</a></span>
         </li>     
       </ul>
     </div>
@@ -80,7 +72,9 @@
         <div class="p-3">
           <h3 class="text-danger">頁面架構與Widgets樹</h3>
           <p>
-            Flutter利用Dart語言進行設計，而每個flutter頁面均由許多widgets所構成，widget為Dart類別(class)，藉由整合不同的widgets來建立APP應用程式。widget包含具狀態(stateful)與不具狀態(stateless)兩種，具狀態widget允許動態修改widget內容值，也就是說頁面元件內容如果會動態變動，就需要使用stateful(具狀態)widget，反之stateless(不具狀態)widget代表widget內容在APP應用程式中絕不會改變。每個widget一定會有一個build函數，用於將現在的widget加入project widgets架構中。<br/>Flutter的版面由許多不同的widgets(程式片段)組合而成，設計時會將版面由上而下分解成widgets tree，再將設計好的widgets由下而上進行組合來建構整個設計版面，以下圖為例：整個版面以縱向(直)來看包含一張圖片；一排字、圖示與文字；一排按鈕與一塊文字，這樣的版面可分解為一欄(column)包含四個小孩(children)。欄的第二個小孩為橫向列(row)包含3個小孩，而橫向的第一個小孩為縱向欄(column)包含兩個小孩。如此類推我們將版面分解為如圖的widgets樹。
+            Flutter使用Dart語言進行設計，而flutter頁面由許多widgets所構成，widget為Dart類別(class)，Flutter藉由組合不同的widgets來建立頁面布局。依據狀態(State)來設定，widget可為具狀態(stateful)或不具狀態(stateless)兩種。<br/>
+            具狀態widget允許動態重新顯示widget內容值，也就是說widget內容是可以動態變動。不具狀態(stateless)widget顯示後就部會改變。每個widget一定會有一個build函數，用於將現在的widget加入project widgets架構中。<br/>
+            Flutter頁面由許多不同的widgets(程式片段)組合而成，我們可以將頁面widgets分解成widgets tree，以下圖為例：頁面以縱向來呈現，整個版面由上而下包含一張圖片；橫排字、橫排圖示按鈕與文字；一排按鈕與一塊文字。<br/>這樣的頁面架構可由欄(Column)widget包含四個小孩(children)，欄(Column)widget內容呈現為縱向，第一個小孩為圖片，第二個小孩為橫向列(row)包含3個小孩，而橫向的第一個小孩為縱向欄(column)包含兩個小孩。如此類推我們將頁面分解為如圖的widgets樹。
           </p>
           <p><img src="imgs/firstapp/firstapp_3-1.jpg"></p>
           <p><img src="imgs/firstapp/firstapp_3-2.png"></p>          

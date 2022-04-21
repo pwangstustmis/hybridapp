@@ -20,25 +20,17 @@
         <li class="mx-2">
           <span class="menuitem"><a href="index.html" class="nav-link">簡介與軟體安裝</a></span>
         </li>
-        <li class="nav-item">
-          <div class="nav-link" href="#topic1" class="nav-item" data-bs-toggle="collapse" aria-expanded="false" aria-controls="topic1">
-            <span class="mx-2">第一個專案</span>
-            <i class="fas fa-angle-right"></i>
-          </div>
-          <div class="collapse" id="topic1">
-            <ul>
-              <li class="menuitem"><a class="nav-link" href="firstapp_1.html">專案檔案架構</a></li>
-            </ul>
-            <ul>
-              <li class="menuitem"><a class="nav-link" href="firstapp_3.html">頁面架構</a></li>
-            </ul>
-            <ul>
-              <li class="menuitem"><a class="nav-link" href="firstapp_2.html">專案程式說明</a></li>
-            </ul>           
-            <ul>
-              <li class="menuitem"><a class="nav-link" href="firstapp_4.html">Dart語言</a></li>
-            </ul>
-          </div>
+        <li class="mx-2">
+          <span class="menuitem"><a href="dart.html" class="nav-link">Dart語言</a></span>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a class="nav-link" href="firstapp_1.html">專案檔案架構</a></span>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a class="nav-link" href="firstapp_2.html">專案程式說明</a></span>
+        </li>
+        <li class="mx-2">
+          <span class="menuitem"><a class="nav-link" href="firstapp_3.html">頁面架構</a></span>
         </li>
         <li class="nav-item">
           <div class="nav-link" href="#topic2" class="nav-item" data-bs-toggle="collapse" aria-expanded="false" aria-controls="topic2">
@@ -52,7 +44,7 @@
           </div>
         </li>
         <li class="mx-2">
-          <span class="menuitem"><a href="navigator_route.html" class="nav-link">導覽與路由</a></span>
+          <span class="menuitem"><a href="navigator_route.html" class="nav-link">導覽</a></span>
         </li>     
       </ul>
     </div>
@@ -83,7 +75,7 @@
         </p>
         <h3 class="text-danger p-3">建立執行專案</h3>
         <p class="px-3" style="margin-top:-20px;">
-          請開啟或新增專案名稱為testapp的Flutter專案並將專案顯示於模擬器。
+          請依照下列操作開啟或新增專案名稱為testapp的Flutter專案並將專案顯示於模擬器。
         </p>
         <pre class="p-3"><code>
     1. 開啟Android Studio
@@ -98,10 +90,10 @@
 
         <h3 class="text-danger p-3">檔案架構-android資料夾</h3>
         <p class="px-3" style="margin-top:-20px;">
-          專案中android資料夾用於進行建立Android原生應用時使用，AndroidManifest.xml用於設定Android應用，res檔案夾包含Android平台會使用的圖示(icon)、圖片與樣式</a>。
+          專案中android資料夾用於進行建立Android原生應用時使用，AndroidManifest.xml為Android APP的設定檔，res檔案夾包含Android平台會使用的圖示(icon)、圖片與樣式</a>。
         </p>
         <img src="imgs/firstapp/firstapp_1-1.png" class="p-3"/>
-        <p class="text-success p-3">練習：請下載並解壓縮<a href="imgs/firstapp/res.zip">res</a>檔，將檔案夾內hdip(72x72)、mdip(48x48)、xhdip(96x96)、xxhdip(144x144)、xxxhdip(192x192) lion.png複製至project-android-app-src-main-res個別檔案夾中，並修改Android設定檔AndroidManifest.xml檔內容讓APP圖示由預設ic_launcher.png改為lion.png。</p>
+        <p class="text-success p-3">練習：請依照下列步驟設定Android APP圖示，下載並解壓縮<a href="imgs/firstapp/res.zip">res</a>檔，將檔案夾內hdip(72x72)、mdip(48x48)、xhdip(96x96)、xxhdip(144x144)、xxxhdip(192x192) lion.png複製至project-android-app-src-main-res個別檔案夾中，並修改Android設定檔AndroidManifest.xml檔內容讓APP圖示由預設ic_launcher.png改為lion.png。</p>
         <pre class="p-3"><code>
     1. 下載res.zip並解壓縮
     2. 將解壓縮後所有檔案夾mipmap-hdpi至mipmap-xxxhdpi複製並覆蓋專案project-android-app-src-main-res
@@ -111,19 +103,19 @@
 
         <h3 class="text-danger p-3">檔案架構-build資料夾</h3>
         <p class="px-3" style="margin-top:-20px;">
-          當使用者選擇Android studio命令Build-Flutter-Build APK時，專案Android apk檔會存放於專案build-app-outputs-apk檔案夾中。
+          用於存放Android APK檔，選擇Android studio命令Build-Flutter-Build APK時，專案Android apk檔會存放於專案build-app-outputs-apk檔案夾中。
         </p>
         <img src="imgs/firstapp/firstapp_1-2.png" class="p-3"/>
 
         <h3 class="text-danger p-3">檔案架構-lib資料夾</h3>
         <p class="px-3" style="margin-top:-20px;">
-          所有專案的頁面程式必須至於lib資料夾中，Flutter使用Dart程式來進行頁面設計，預設project僅包含單一頁面程式main.dart。
+          用於放置專案葉面程式，專案的頁面程式需置於lib資料夾中，Flutter使用Dart程式來進行頁面設計，因此頁面檔案都必須是Dart檔案，預設project包含一個頁面程式main.dart，也是專案進入程式。
         </p>
         <img src="imgs/firstapp/firstapp_1-3.png" class="p-3"/>
 
-        <h3 class="text-danger p-3">檔案架構-pubspec.yaml</h3>
+        <h3 class="text-danger p-3">檔案架構-pubspec.yaml檔</h3>
         <p class="px-3" style="margin-top:-20px;">
-          pubspec.yaml為專案設定檔，Flutter專案經常需要利用外部資源包含第三方套件、外部字型、圖片與影片等，這些都必須在pubspec.yaml檔中進行設定，請注意：pubspec.yaml檔案編輯是類似大綱設定，同樣階層必須對齊，而且不能使用TAB鍵來進行對齊。
+          pubspec.yaml為專案設定檔，Flutter專案經常需要利用外部資源包含第三方套件、外部字型、圖片與影片等，這些都必須在pubspec.yaml檔中進行設定，請注意：pubspec.yaml為階層式的資料結構檔案，階層必須使用空白對齊，階層可以是一個以上空白，不能使用TAB鍵來進行對齊。
         </p>
       </div>
     </div>
