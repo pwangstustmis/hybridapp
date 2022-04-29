@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flutter</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+
+    <!-- Side-Nav -->
+    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column" id="sidebar">
+        <ul class="nav flex-column text-white w-100">
+          <li class="nav-item" style="background-color: #fff;padding-left:10px;padding-top:10px;border-bottom: rgb(255, 115, 0) 2px solid;font-size: 16pt;">
+            <p style="color:rgb(248, 138, 11);font-weight: 700;">Flutter<br/>跨平台行動程式進階應用開發</p>
+          </li>
+          <li class="mx-2">
+            <span class="menuitem"><a href="index.html" class="nav-link">簡介與軟體安裝</a></span>
+          </li>
+          <li class="mx-2">
+            <span class="menuitem"><a href="dart.html" class="nav-link">Dart語言</a></span>
+          </li>
+          <li class="mx-2">
+            <span class="menuitem"><a class="nav-link" href="firstapp_1.html">專案檔案架構</a></span>
+          </li>
+          <li class="mx-2">
+            <span class="menuitem"><a class="nav-link" href="firstapp_2.html">專案程式說明</a></span>
+          </li>
+          <li class="mx-2">
+            <span class="menuitem"><a class="nav-link" href="firstapp_3.html">頁面架構</a></span>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link" href="#topic2" class="nav-item" data-bs-toggle="collapse" aria-expanded="false" aria-controls="topic2">
+              <span class="mx-2">Widgets控制項</span>
+              <i class="fas fa-angle-right"></i>
+            </div>
+            <div class="collapse" id="topic2">
+              <ul>
+                <li class="menuitem"><a class="nav-link" href="basicwidgets.html">基本Widgets</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="mx-2">
+            <span class="menuitem"><a href="navigator_route.html" class="nav-link">導覽(跳頁)</a></span>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link" href="#topic3" class="nav-item" data-bs-toggle="collapse" aria-expanded="false" aria-controls="topic3">
+              <span class="mx-2">外部套件</span>
+              <i class="fas fa-angle-right"></i>
+            </div>
+            <div class="collapse" id="topic3">
+              <ul>
+                <li class="menuitem"><a class="nav-link" href="package_map.html">地圖(Map)</a></li>
+              </ul>
+            </div>
+          </li>    
+        </ul>
+      </div>
+
+
+    <!-- Main Wrapper -->
+    <div class="p-2 my-container active-cont">
+      <!-- Breadcrumb -->
+      <div class="bg-light px-5" aria-label="breadcrumb" style="height:40px;position:fixed;width:100%;top:0;">
+        <a class="btn border-0" id="menu-btn" style="position:fixed"><i class="fas fa-bars"></i></a>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">外部套件- 地圖(Map)</li>
+        </ol>
+      </div>
+      <!--End Top Nav -->
+
+      <!-- main page -->
+      <div style="margin-top:50px;">
+        <h3 class="text-danger p-3">內容涵蓋</h3>
+        <p class="px-3" style="margin-top:-20px;">
+          <ul>
+            <li>套件安裝</li>
+            <li>套件使用</li>
+            <li>套件API應用</li>
+          </ul>
+        </p>
+        <div class="p-3">
+          <h3 class="text-danger">單元簡介</h3>
+          <p>
+            Flutter依賴許多開源套件進行各種應用開發，開發者可至<a href="https://pub.dev/" target="_blank">Flutter套件中心</a>搜尋適當套件，Flutter有許多開源地圖套件如<a href="https://pub.dev/packages/flutter_osm_plugin" target="_blank">Flutter OSM Plugin</a>(為OSM地圖實作)、<a href="https://pub.dev/packages/flutter_map" target="_blank">Flutter Map</a>(為Leaflet地圖實作)等，本單元將OSM套件Flutter OSM Plugin與Flutter Map。
+          </p>
+        </div>
+        <div class="p-3">
+          <h3 class="text-danger">地圖套件- flutter_osm_plugin安裝</h3>
+          <p>
+            每個Flutter套件包含如下圖項目：<span class="text-danger">1-適用Flutter或Dart開發套件、2-套件適用執行平台、3-套件內容：套件說明(Readme)、更改紀錄(Changelog)、範例(Example)、安裝(Installing)、版本(Versions)、比分(Scores)、4-套件在GitHub位置、5-套件安裝資訊。</span>
+          </p>
+            <p>
+                <img src="imgs/packages/map/map1.png"/>
+            </p>
+            <p>
+                安裝套件可在命令提示字元視窗專案目錄下執行 <span class="text-danger">flutter pub add flutter_osm_pluing</span>、或是在 Android Studio中開啟專案 <span class="text-danger">pubspec.yaml</span>檔中<span class="text-danger">dependencies:</span>中加入如套件設定後，再點選Android Studio的<span class="text-danger">pub get</span>來下載套件。
+            </p>
+            <p>
+                <img src="imgs/packages/map/map2.png"/>
+            </p>
+            <p>
+              套件下載完畢後，請開啟 <span class="text-danger">專案目錄-android-app-build.gradle檔</span>，並在<span class="text-danger">defaultConfig</span>中設定<span class="text-danger">minSdkVersion 19</span>，同時在<span class="text-danger">dependencies</span>中加入<span class="text-danger">implementation "androidx.multidex:multidex:2.0.1"</span>，build.gradle設定是因為套件最低要求第19版Android，同時因為套件方法數超過64K，因此需要第二項設定，設定結果如下圖：
+            </p>
+            <p>
+              <img src="imgs/packages/map/map3.png"/>
+          </p>
+          <p>
+            <img src="imgs/packages/map/map4.png"/>
+          </p>
+        </div>
+        <div class="p-3">
+            <h3 class="text-danger">使用flutter_osm_plugin套件</h3>
+            <p>
+              我們將搭配Readme說明測試基本功能。套件使用步驟如下：
+              <ol>
+                  <li>
+                    <span class="text-danger">匯入套件模組</span>：請依照下圖匯入套件模組<span class="text-danger">import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';</span>。
+                    <p>
+                      <img src="imgs/packages/map/map5.png"/>
+                    </p>
+                  </li>
+                  <li>
+                    <span class="text-danger">宣告套件控制物件</span>：flutter_osm_plugin套件透過<span class="text-danger">MapController</span>控制地圖，程式一開始使用 <span class="text-danger">late MapController mapController;</span> 宣告地圖控制物件變數 mapContorller，因為Dart變數不可為空值(null)，因此變數宣告使用<span class="text-danger">late</span>關鍵字，<span class="text-danger">late</span>關鍵字代表變數一定要在宣告之後與使用之前產生，否則程式會產生錯誤。接下來我們會看到Flutter兩個頁面執行週期(<span class="text-danger">initState()、dispose()</span>)，因為地圖物件會隨使用者互動而產生變化，所以他會置於具狀態widget，具狀態widget在<span class="text-danger">createState()</span>後，第一個執行週期為<span class="text-danger">initState()</span>，<span class="text-danger">initState()</span>只會被執行一次，一般用於起始設定如下圖程式建立地圖控制物件，他會進行覆寫(override)並首先執行<span class="text-danger">super.initState()</span>，之後再寫入使用者程式，當widget被移除時會執行<span class="text-danger">dispose()</span>用於移除資源如<span class="text-danger">mapController.dispose()</span>，最後須執行<span class="text-danger">super.dispose()</span>。下圖地圖控制物件設定<span class="text-danger">initMapWithUserPosition: true</span>設定地圖的起始位置為使用者現在位置，如果不使用使用者現在位置可以透過<span class="text-danger">initPosition: GeoPoint(latitude: 23.02568550691943, longitude: 120.22663999626354)</span>設定起始的緯度(latitude)與經度(longitude)。
+                    <p>
+                      <img src="imgs/packages/map/map6.png"/>
+                    </p>
+                  </li>
+                  <li>
+                    <span class="text-danger">頁面內容設定地圖物件</span>：最後依照下圖在頁面內容透過<span class="text-danger">OSMFlutter</span>widget來顯示地圖，<span class="text-danger">controller</span>用於設定地圖控制物件，<span class="text-danger">initZoom</span>用於設定地圖起始比例，<span class="text-danger">minZoomLevel</span>用於設定地圖最小比例，<span class="text-danger">maxZoomLevel</span>用於設定地圖最大比例，<span class="text-danger">stepZoom</span>用於設定地圖每物加減比例，<span class="text-danger">markerOption</span>用於設定地圖標示。
+                    <p>
+                      <img src="imgs/packages/map/map7.png"/>
+                    </p>
+                  </li>
+              </ol>
+              完整程式如下：
+            </p>
+            <pre><code>
+import 'package:flutter/material.dart';
+import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+  
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  State&lt;MyHomePage&gt; createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State&lt;MyHomePage&gt; {
+  late MapController mapController;
+
+  @override
+  void initState() {
+    super.initState();
+    mapController = MapController(
+      initMapWithUserPosition: true,
+      //initPosition: GeoPoint(latitude: 23.02568550691943, longitude: 120.22663999626354),
+    );
+  }
+  @override
+  void dispose() {
+    mapController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("flutter osm plugin測試"),
+      ),
+      body: OSMFlutter(
+        controller:mapController,
+        trackMyPosition: false,
+        initZoom: 17,
+        minZoomLevel: 6,
+        maxZoomLevel: 18,
+        stepZoom: 1.0,,
+      ), 
+    );
+  }
+}
+            </code></pre>
+              
+          </div>
+          <div class="p-3">
+            <h3 class="text-danger">套件API應用</h3>
+            <p>
+              本單元將使用flutter osm plugin套件中<span class="text-danger">zoomIn()、zoomOut()、onMapIsReady、myLocation()、addMarker()</span>來開發如下圖應用：在現在位置設定標示、右下角加入兩個浮點按鈕點選放大與縮小。下圖顯示模擬器位置，使用手機將顯示真實現在位置。
+            </p>
+            <p>
+              <img src="imgs/packages/map/map8.png"/>
+            </p>
+            <p>
+              應用將從右下角兩個兩個浮點按鈕開始，<span class="text-danger">Scaffold widget</span>的<span class="text-danger">floatingActionButton</span>屬性預設放置一個浮點按鈕，要擺放兩個浮點按鈕，我們將使用<span class="text-danger">Stack widget</span>，<span class="text-danger">Stack widget</span>顧名思義是將多個內容進行堆疊擺置，下一個內容會擺在上一個內容之上，同時我們將藉由<span class="text-danger">Positioned widget</span>來控制個別浮點按鈕位置，<span class="text-danger">Positioned widget</span>用於設定<span class="text-danger">top(上)、bottom(下)、left(左)、right(右)</span>距離，浮點按鈕<span class="text-danger">onPressed</span>屬性的<span class="text-danger">mapController.zoomIn();、mapController.zoomOut();</span>分別設定放大與縮小，將下列程式片段加入上一個完整程式範立，我們就可以在地圖頁面加入兩個浮點按鈕。
+            </p>
+            <pre><code>
+floatingActionButton: Stack(
+  children:[
+    Positioned(
+      right:0,
+      bottom:80,
+      child: FloatingActionButton(
+        onPressed: (){mapController.zoomIn();},
+        child:Icon(Icons.add,size:36)
+      )
+    ),
+    Positioned(
+      right:0,
+      bottom:10,
+      child: FloatingActionButton(
+        onPressed: (){mapController.zoomOut();},
+        child:Text("-",style:TextStyle(fontSize:36))
+      )
+    )
+  ]
+),
+            </code></pre>
+            <p>
+              最後是在現在位置加上標示(marker)，要加上標示程式會用到<span class="text-danger">onMapIsReady、myLocation()、addMarker()</span>，<span class="text-danger">onMapIsReady</span>為<span class="text-danger">OSMFlutter widget</span>屬性，用於設定地圖完成後的事件，設定會有一布林值代入值，程式片段如下：
+            </p>
+            <pre><code>
+OSMFlutter(
+  controller:mapController,
+  trackMyPosition: false,
+  initZoom: 17,
+  minZoomLevel: 6,
+  maxZoomLevel: 18,
+  stepZoom: 1.0,
+  onMapIsReady: (bool x){initMarker();},
+),
+            </code></pre>
+            <p>
+              函數<span class="text-danger">initMarker()</span>用於設定現在位置標示，程式片段如下。函數<span class="text-danger">initMarker()</span>首先取得現在的位置，並以資料類型<span class="text-danger">GeoPoint</span>傳回現在緯經度，因為取得現在位置為非同步的動作，因此函數宣告為<span class="text-danger">Future&lt;void&gt;> initMarker() async{}</span>，請注意：函數要使用非同步命令<span class="text-danger">await</span>，必須在函數宣告時加入<span class="text-danger">async</span>，之後利用地圖控制<span class="text-danger">addMarker()</span>方法在現在位置加入標示，標示設定如程式片段，首先設定標示位置，之後設定標示的圖示。
+            </p>
+            <pre><code>
+Future&lt;void&gt;> initMarker() async {
+  GeoPoint home=await mapController.myLocation();
+  await mapController.addMarker(
+      home,
+      markerIcon:MarkerIcon(
+          icon:Icon(Icons.location_pin,size:100,color:Colors.red)
+      )
+  );
+}
+            </code></pre>
+            <p>
+              完整程式如下：
+            </p>
+            <pre><code>
+import 'package:flutter/material.dart';
+import 'package:flutter_osm_plugin/flutter_osm_plugin.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  State&lt;MyHomePage&gt; createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State&lt;MyHomePage&gt; {
+  late MapController mapController;
+
+  Future&lt;void&gt; initMarker() async {
+    GeoPoint home=await mapController.myLocation();
+    await mapController.addMarker(
+        home,
+        markerIcon:MarkerIcon(
+            icon:Icon(Icons.location_pin,size:100,color:Colors.red)
+        )
+    );
+  }
+  @override
+  void initState() {
+    super.initState();
+    mapController = MapController(
+      initMapWithUserPosition: true,
+      //initPosition: GeoPoint(latitude: 23.02568550691943, longitude: 120.22663999626354),
+    );
+  }
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    mapController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("flutter osm plugin測試"),
+      ),
+      body: OSMFlutter(
+              controller:mapController,
+              trackMyPosition: false,
+              initZoom: 17,
+              minZoomLevel: 6,
+              maxZoomLevel: 19,
+              stepZoom: 1.0,
+              onMapIsReady: (bool x){initMarker();},
+            ),
+      floatingActionButton: Stack(
+        children:[
+          Positioned(
+              right:0,
+              bottom:80,
+              child: FloatingActionButton(
+                onPressed: (){mapController.zoomIn();},
+                child:Icon(Icons.add,size:36)
+              )
+          ),
+          Positioned(
+              right:0,
+              bottom:10,
+              child: FloatingActionButton(
+                  onPressed: (){mapController.zoomOut();},
+                  child:Text("-",style:TextStyle(fontSize:36))
+              )
+          )
+        ]
+      ),
+    );
+  }
+}
+            </code></pre>
+          </div>
+          <div class="p-3">
+            <h3 class="text-danger">地圖套件- flutter_map安裝</h3>
+            <p>
+              請至<a href="https://pub.dev/packages/flutter_map" target="_blank">flutter map</a>安裝套件。
+            </p>
+              <p>
+                  <img src="imgs/packages/map/map9.png"/>
+              </p>
+              <p>
+                <span class="text-danger">flutter_map</span>套件本身不支援取得現在位置，因此需要<a href="https://pub.dev/packages/location" target="_blank">location</a>套件，套件需在<span class="text-danger">專案-android-app-src-main-AndroidManifest.xml</span>檔中加入下列權限，請加在<span class="text-danger">&lt;application&gt;</span>標籤之前。
+              </p>
+              <pre><code>
+&lt;uses-permission android:name="android.permission.FOREGROUND_SERVICE" /&gt;
+&lt;uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/&gt;
+              </code></pre>
+              <p class="text-success">
+                練習：請參考<span class="text-danger">location</span>套件的readme(說明)，取得現在位置緯度與經度。
+            </p>
+            <p>
+              <span class="text-danger">flutter_map</span>需要<a href="https://pub.dev/packages/latlong2" target="_blank">latlong2</a>套件將緯度與經度轉換為<span class="text-danger">LatLng</span>物件，請安裝<span class="text-danger">latlong2</span>套件。
+            </p>
+          </div>
+          <div class="p-3">
+              <h3 class="text-danger">使用flutter_map套件</h3>
+              <p class="text-success">
+                請利用<span class="text-danger">location</span>取得現在位置並搭配<span class="text-danger">flutter_map</span>中Readme顯示現在位置地圖。
+              </p>                 
+            </div>
+            <div class="p-3">
+              <h3 class="text-danger">套件API應用</h3>
+              <p>
+                本單元將使用flutter map套件地圖控制<span class="text-danger">move()、Marker()</span>來開發如前一範例應用。標示設定如下：
+              </p>
+              <pre><code>
+Marker(
+  point: LatLng(
+    23.02568550691943,
+    120.22663999626354,
+  ),
+  builder: (context) => const Icon(
+    Icons.circle,
+    color: Colors.red,
+    size: 12.0,
+  ),
+),
+              </code></pre>
+
+            </div>
+
+      </div>
+    </div>
+
+    <!-- bootstrap js -->
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>  
+    
+    <!-- custom js -->
+    <script>
+      var menu_btn = document.querySelector("#menu-btn");
+      var sidebar = document.querySelector("#sidebar");
+      var container = document.querySelector(".my-container");
+      menu_btn.addEventListener("click", () => {
+        sidebar.classList.toggle("active-nav");
+        container.classList.toggle("active-cont");
+      });
+    </script>
+  </body>
+</html>
