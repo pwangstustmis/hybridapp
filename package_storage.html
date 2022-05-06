@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flutter</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+
+    <!-- Side-Nav -->
+    <div class="side-navbar active-nav d-flex justify-content-between flex-wrap flex-column" id="sidebar">
+        <ul class="nav flex-column text-white w-100">
+          <li class="nav-item" style="background-color: #fff;padding-left:10px;padding-top:10px;border-bottom: rgb(255, 115, 0) 2px solid;font-size: 16pt;">
+            <p style="color:rgb(248, 138, 11);font-weight: 700;">Flutter<br/>跨平台行動程式進階應用開發</p>
+          </li>
+          <li class="mx-2">
+            <span class="menuitem"><a href="index.html" class="nav-link">簡介與軟體安裝</a></span>
+          </li>
+          <li class="mx-2">
+            <span class="menuitem"><a href="dart.html" class="nav-link">Dart語言</a></span>
+          </li>
+          <li class="mx-2">
+            <span class="menuitem"><a class="nav-link" href="firstapp_1.html">專案檔案架構</a></span>
+          </li>
+          <li class="mx-2">
+            <span class="menuitem"><a class="nav-link" href="firstapp_2.html">專案程式說明</a></span>
+          </li>
+          <li class="mx-2">
+            <span class="menuitem"><a class="nav-link" href="firstapp_3.html">頁面架構</a></span>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link" href="#topic2" class="nav-item" data-bs-toggle="collapse" aria-expanded="false" aria-controls="topic2">
+              <span class="mx-2">Widgets控制項</span>
+              <i class="fas fa-angle-right"></i>
+            </div>
+            <div class="collapse" id="topic2">
+              <ul>
+                <li class="menuitem"><a class="nav-link" href="basicwidgets.html">基本Widgets</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="mx-2">
+            <span class="menuitem"><a href="navigator_route.html" class="nav-link">導覽(跳頁)</a></span>
+          </li>
+          <li class="nav-item">
+            <div class="nav-link" href="#topic3" class="nav-item" data-bs-toggle="collapse" aria-expanded="false" aria-controls="topic3">
+              <span class="mx-2">外部套件</span>
+              <i class="fas fa-angle-right"></i>
+            </div>
+            <div class="collapse" id="topic3">
+              <ul>
+                <li class="menuitem"><a class="nav-link" href="package_map.html">地圖(Map)</a></li>
+              </ul>
+              <ul>
+                <li class="menuitem"><a class="nav-link" href="package_storage.html">資料儲存</a></li>
+              </ul>
+            </div>
+          </li>    
+        </ul>
+      </div>
+
+
+    <!-- Main Wrapper -->
+    <div class="p-2 my-container active-cont">
+      <!-- Breadcrumb -->
+      <div class="bg-light px-5" aria-label="breadcrumb" style="height:40px;position:fixed;width:100%;top:0;">
+        <a class="btn border-0" id="menu-btn" style="position:fixed"><i class="fas fa-bars"></i></a>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">外部套件- 資料儲存(Storage)</li>
+        </ol>
+      </div>
+      <!--End Top Nav -->
+
+      <!-- main page -->
+      <div style="margin-top:50px;">
+        <h3 class="text-danger p-3">內容涵蓋</h3>
+        <p class="px-3" style="margin-top:-20px;">
+          <ul>
+            <li>本地端資料儲存</li>
+            <li>雲端資料儲存</li>
+          </ul>
+        </p>
+        <div class="p-3">
+          <h3 class="text-danger">單元簡介</h3>
+          <p>
+            Flutter依據資料儲存位置可分為本地端資料儲存與雲端資料儲存，本地端資料儲存涵蓋<span class="text-danger">鍵/值、資料庫(SQLite)</span>，雲端資料儲存將介紹<span class="text-danger">HTTP-PHP-MySQL、Google Firebase Cloud Storage</span>。
+          </p>
+        </div>
+        <div class="p-3">
+          <h3 class="text-danger">本地端資料儲存- 鍵/值(Key/Value)</h3>
+          <p>
+            儲存少量、簡單、比較不重要資料可使用<span class="text-danger">鍵/值</span>方式儲存資料，Flutter<span class="text-danger">鍵/值</span>儲存操作如下：
+          </p>
+          <ol>
+            <li>
+              <p>
+              <span class="text-danger">套件安裝</span>：請安裝如下圖<a href="https://pub.dev/packages/shared_preferences" target="_blank">shared_preferences</a>套件。可儲存資料類型包含：<span class="text-danger">int、double、bool、String、List&lt;String&gt;</span>。
+            </p>
+              <p>
+                <img src="imgs/packages/storage/storage1.png"/>
+              </p>
+            </li>
+            <li>
+              <span class="text-danger">套件使用</span>：先建立<span class="text-danger">shared_preferences</span>物件，之後使用<span class="text-danger">setInt()、setBool()、setDouble()、setString()、setStringList()</span>儲存資料，<span class="text-danger">getInt()、getBool()、getDouble()、getString()、getStringList()</span>取得資料，下圖設定兩個文字欄位及兩個文字按鈕，點選儲存利用<span class="text-danger">shared_preferences</span>儲存文字性鍵/值，取得利用鍵值取出值並顯示於第二個文字欄位。
+            </li>
+            <p>
+              <img src="imgs/packages/storage/storage2.png"/>
+            </p>
+          </ol>
+          <p>完整程式如下：</p>
+          <pre><code>
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePage(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
+  @override
+  State&lt;MyHomePage&gt; createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State&lt;MyHomePage&gt; {
+  TextEditingController _textCtrl1=TextEditingController();
+  TextEditingController _textCtrl2=TextEditingController();
+  late SharedPreferences prefs;
+
+  Future&lt;void&gt; initSharedPref() async {
+    prefs = await SharedPreferences.getInstance(); //建立SharedPreferences物件
+  }
+  @override
+  void initState() {
+    super.initState();
+    initSharedPref();
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("shared_preferences套件測試"),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child:Column(
+          children:[
+            Text("請輸入儲存鍵值(Key):",style:TextStyle(fontSize: 24)),
+            TextField(
+              controller: _textCtrl1,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: '輸入Key',
+              ),
+            ),
+            Text("請輸入儲存值(Value):",style:TextStyle(fontSize: 24)),
+            TextField(
+              controller: _textCtrl2,
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                hintText: '輸入Value',
+              ),
+            ),
+            Row(
+              children:[
+                TextButton(
+                    onPressed: ()async{
+                      await prefs.setString(_textCtrl1.text, _textCtrl2.text);
+                    },
+                    child: Text("儲存",style:TextStyle(fontSize: 20)),
+                ),
+                TextButton(
+                    onPressed: ()async{
+                      String? str=await prefs.getString(_textCtrl1.text);
+                      if (str!=null)
+                        _textCtrl2.text=str;
+                    },
+                    child: Text("取得",style:TextStyle(fontSize: 20)))
+              ]
+            )
+          ]
+        )
+      )
+    );
+  }
+}
+          </code></pre>            
+        </div>
+        <div class="p-3">
+          <h3 class="text-danger">本地端資料儲存- SQLite</h3>
+          <p>
+            不同於先前鍵/值資料儲存，當使用者需要大量資料操作時，比較好的方式是透過資料庫，<span class="text-danger">SQLite</span>為一輕量化資料庫管理系統同時支援不同平台，要使用<span class="text-danger">SQLite</span>，使用者需安裝<span class="text-danger">sqflite</span>與<span class="text-danger">path</span>套件。
+          </p>
+          <p>
+            <img src="imgs/packages/storage/storage3.png"/>
+          </p>
+          <p>
+            <img src="imgs/packages/storage/storage4.png"/>
+          </p>
+          <p>
+            APP使用SQLite紀錄麥當勞分店，資料庫名稱<span class="text-danger">mac.db</span>、資料表包含<span class="text-danger">cities(城市)</span>、<span class="text-danger">districts(區)</span>、<span class="text-danger">branches(分店)</span>，資料表定義如下：
+          </p>
+          <pre><code>
+cities資料表
+id 編號 自動編號
+name 城市名稱 TEXT
+
+districts資料表
+id 編號 自動編號
+cid 城市編號 INTEGER
+name 區名稱 TEXT
+
+branches資料表
+id 編號 自動編號
+cid 城市編號 INTEGER
+did 區編號 INTEGER
+name 分店名稱 TEXT 
+address 地址 TEXT 
+lat 緯度 REAL
+lon 經度 REAL
+          </code></pre>
+          操作步驟如下：
+          <ol>
+            <li>
+              <p>
+                將程式<span class="text-danger">main()</span>改為下列程式片段。<span class="text-danger">main()</span>程式改為非同步因為要執行開啟資料庫命令，命令<span class="text-danger">join</span>為<span class="text-danger">path</span>套件命令，用於產生資料庫路徑，<span class="text-danger">openDatabase</span>為<span class="text-danger">sqflite</span>套件命令，用於開啟資料庫，<span class="text-danger">onCreate</span>屬性用於設定沒有資料庫存在時的動作。
+              </p>
+              <pre><code>
+void main() async {
+  //避免因Flutter更新而產生錯誤
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final database = openDatabase(
+    join(await getDatabasesPath(), 'mac.db'),
+    onCreate: (db, version) async {
+      await db.execute(
+      'CREATE TABLE cities(id INTEGER PRIMARY KEY,name TEXT)',
+      );
+      await db.execute(
+      'CREATE TABLE districts(id INTEGER PRIMARY KEY,cid INTEGER,name TEXT)',
+      );
+      await db.execute(
+      'CREATE TABLE branches(id INTEGER PRIMARY KEY,cid INTEGER,did INTEGER,name TEXT,address TEXT,phone TEXT,lat REAL,lon REAL)',
+      );
+    },
+    version: 1,
+  );
+  runApp(const MyApp());
+}
+              </code></pre>
+            </li>
+            <li>
+              <p>
+              <span class="text-danger">資料新增</span>：資料新增<span class="text-danger">insert</span>語法如下物件：
+              </p>
+              <pre><code>
+語法:
+insert(資料表名稱,資料物件,conflictAlgorithm: ConflictAlgorithm.replace)
+
+insert('cities',{'name':'臺南市'},conflictAlgorithm: ConflictAlgorithm.replace)
+              </code></pre>
+            </li>
+            <li>
+              <p>
+              <span class="text-danger">資料查詢</span>：資料查詢<span class="text-danger">query</span>語法如下物件：
+              </p>
+              <pre><code>
+語法:
+Future&lt;List&lt;Map&lt;String, Object?&gt;&gt;&gt; query(
+String table,
+{bool? distinct,
+List&lt;String&gt;? columns,
+String? where,
+List&lt;Object?&gt;? whereArgs,
+String? groupBy,
+String? having,
+String? orderBy,
+int? limit,
+int? offset}
+)
+
+List&lt;Map&gt; maps = await db.query(tableTodo,
+  columns: ['columnId', 'columnDone', 'columnTitle'],
+  where: 'columnId = ?',
+  whereArgs: [id]);
+
+final List&lt;Map&lt;String, dynamic&gt;&gt; maps = await db.query('cities');
+return List.generate(maps.length, (i) {
+  return Cities(
+    id: maps[i]['id'],
+    name: maps[i]['name'],
+  );
+});
+              </code></pre>
+            </li>
+            <li>
+              <p>
+              <span class="text-danger">資料更新</span>：資料更新<span class="text-danger">update</span>語法如下物件：
+              </p>
+              <pre><code>
+語法:
+Future&lt;int&gt; update(
+  String table,
+  Map&lt;String, Object?&gt; values,
+  {String? where,
+  List&lt;Object?&gt;? whereArgs,
+  ConflictAlgorithm? conflictAlgorithm}
+  )
+
+  await db.update(
+      'cities',
+      {'name':'高雄市'},
+      where: 'id = ?',
+      whereArgs: [1],
+    );
+              </code></pre>
+            </li>
+            <li>
+              <p>
+              <span class="text-danger">資料刪除</span>：資料刪除<span class="text-danger">delete</span>語法如下物件：
+              </p>
+              <pre><code>
+語法:
+Future&lt;int&gt; delete(
+  String table,
+  {String? where,
+  List&lt;Object?&gt;? whereArgs}
+  )
+
+  await db.delete(
+      'cities',
+      where: 'id = ?',
+      whereArgs: [1],
+    );
+              </code></pre>
+            </li>
+          </ol>
+          
+        </div>
+        
+
+      </div>
+    </div>
+
+    <!-- bootstrap js -->
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>  
+    
+    <!-- custom js -->
+    <script>
+      var menu_btn = document.querySelector("#menu-btn");
+      var sidebar = document.querySelector("#sidebar");
+      var container = document.querySelector(".my-container");
+      menu_btn.addEventListener("click", () => {
+        sidebar.classList.toggle("active-nav");
+        container.classList.toggle("active-cont");
+      });
+    </script>
+  </body>
+</html>
