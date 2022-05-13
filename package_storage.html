@@ -218,57 +218,79 @@ class _MyHomePageState extends State&lt;MyHomePage&gt; {
             <img src="imgs/packages/storage/storage4.png"/>
           </p>
           <p>
-            APP使用SQLite紀錄麥當勞分店，資料庫名稱<span class="text-danger">mac.db</span>、資料表包含<span class="text-danger">cities(城市)</span>、<span class="text-danger">districts(區)</span>、<span class="text-danger">branches(分店)</span>，資料表定義如下：
+            APP使用SQLite紀錄簡化小麥麥分店資料，資料庫名稱<span class="text-danger">mac.db</span>、分店資料表包含<span class="text-danger">branches(分店)</span>，資料表定義如下：
           </p>
           <pre><code>
-cities資料表
 id 編號 自動編號
-name 城市名稱 TEXT
-
-districts資料表
-id 編號 自動編號
-cid 城市編號 INTEGER
-name 區名稱 TEXT
-
-branches資料表
-id 編號 自動編號
-cid 城市編號 INTEGER
-did 區編號 INTEGER
-name 分店名稱 TEXT 
+cname 城市 TEXT
+bname 分店名稱 TEXT 
 address 地址 TEXT 
 lat 緯度 REAL
 lon 經度 REAL
           </code></pre>
-          操作步驟如下：
+          接下來將依序說明<span class="text-danger">sqflite</span>套件操作步驟：
           <ol>
             <li>
               <p>
-                將程式<span class="text-danger">main()</span>改為下列程式片段。<span class="text-danger">main()</span>程式改為非同步因為要執行開啟資料庫命令，命令<span class="text-danger">join</span>為<span class="text-danger">path</span>套件命令，用於產生資料庫路徑，<span class="text-danger">openDatabase</span>為<span class="text-danger">sqflite</span>套件命令，用於開啟資料庫，<span class="text-danger">onCreate</span>屬性用於設定沒有資料庫存在時的動作。
+                將程式<span class="text-danger">main.dart</span>中匯入<span class="text-danger">sqflite.dart、path.dart</span>模組。
               </p>
               <pre><code>
-void main() async {
+import 'package:sqflite/sqflite.dart';
+import 'package:path/path.dart';
+              </code></pre>
+            </li>
+            <li>
+              <p>
+                將程式<span class="text-danger">main()</span>中加入<span class="text-danger">WidgetsFlutterBinding.ensureInitialized();</span>，目的是避免因Flutter更新而產生錯誤。
+              </p>
+              <pre><code>
+void main() {
   //避免因Flutter更新而產生錯誤
   WidgetsFlutterBinding.ensureInitialized();
 
-  final database = openDatabase(
-    join(await getDatabasesPath(), 'mac.db'),
-    onCreate: (db, version) async {
-      await db.execute(
-      'CREATE TABLE cities(id INTEGER PRIMARY KEY,name TEXT)',
-      );
-      await db.execute(
-      'CREATE TABLE districts(id INTEGER PRIMARY KEY,cid INTEGER,name TEXT)',
-      );
-      await db.execute(
-      'CREATE TABLE branches(id INTEGER PRIMARY KEY,cid INTEGER,did INTEGER,name TEXT,address TEXT,phone TEXT,lat REAL,lon REAL)',
-      );
-    },
-    version: 1,
-  );
   runApp(const MyApp());
 }
               </code></pre>
             </li>
+            <li>
+              覆寫狀態類別設定起始狀態設定<span class="text-danger">initState</span>並執行非同步開啟資料庫。
+            </li>
+            <pre><code>
+@override
+void initState() {
+  super.initState();
+  openDB();
+}
+Future&lt;void&gt; openDB(String dbName) async {
+  //當db為null時執行openDatabase
+  db??=await openDatabase(
+    join(await getDatabasesPath(), dbName),
+    onCreate: (db, version) {
+      // Run the CREATE TABLE statement on the database.
+      return db.execute(
+        'CREATE TABLE IF NOT EXISTS branches (id INTEGER PRIMARY KEY AUTOINCREMENT,cname TEXT,bname TEXT,address TEXT,lat TEXT,lon TEXT)',
+      );
+    },
+    version: 1,
+  );
+}
+            </code></pre>
+            <li>
+              之後透過下列insert及query命令來新增或查詢資料。
+              <pre><code>
+
+Future&lt;void&gt; insertTable(String tableName,Map&lt;String,dynamic&gt; data) async {
+  await openDB('mac.db'); //確認已開啟資料庫
+  await db?.insert('branches',{'cname':'Tainan','bname':'a','address':'qqq','lat':'1.2','lon':'2.2'});
+  //await db?.insert(tableName,data); //新增資料
+}
+Future&lt;List&lt;Map&lt;String,dynamic&gt;&gt;&gt; queryTable(String tableName,bool distinct,List&lt;String&gt; columns,String where,List<dynamic> whereargs,String orderby) async {
+  await openDB('mac.db'); //確認已開啟資料庫
+  return await db?.query(tableName) as List&lt;Map&lt;String,dynamic&gt;&gt;;
+}
+              </code></pre>
+            </li>
+            
             <li>
               <p>
               <span class="text-danger">資料新增</span>：資料新增<span class="text-danger">insert</span>語法如下物件：
@@ -354,8 +376,59 @@ Future&lt;int&gt; delete(
     );
               </code></pre>
             </li>
+            <li>
+              設定版面：頁面分為上下兩個部分，上面包含城市、分店名稱、地址、緯度與經度，下面區域為一清單(List)用於顯示資料表中分店資料。
+            </li>
           </ol>
           
+        </div>
+        <div class="p-3">
+          <h3 class="text-danger">遠端資料儲存- HTTP/APACHE/PHP/MySQL</h3>
+          <p>
+            不同於先前本地端儲存，使用者利用<span class="text-danger">HTTP</span>套件並搭配後端<span class="text-danger">APACHE/PHP/MySQL</span>來進行資料存取，執行步驟如下：
+          </p>
+          <ul>
+            <li>
+              <span class="text-danger">APACHE/PHP/MySQL</span>安裝：請參閱<a href="https://pwangstustmis.github.io/PHP" target="_blank">PHP課程</a>。
+            </li>
+            <li>
+              <span class="text-danger">HTTP</span>套件安裝：請參閱<a href="https://pub.dev/packages/http" target="_blank">HTTP</a>套件。
+            </li>
+            <li>
+              透過以下範例可進行<span class="text-danger">HTTP POST/GET</span>。回傳狀態會在<span class="text-danger">statusCode</span>屬性(正確回傳狀態值為<span class="text-danger">200</span>)，回傳資料會在<span class="text-danger">body</span>屬性。
+              <pre><code>
+//資料以表單物件方式傳送
+var url = Uri.parse('https://example.com/whatsit/create');
+var response = await http.post(url, body: {'name': 'doodle', 'color': 'blue'});
+print('Response status: ${response.statusCode}');
+print('Response body: ${response.body}');
+
+//當資料以JSON方式傳送(Flutter端)
+http.post(
+    Uri.parse('https://jsonplaceholder.typicode.com/albums'),
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: jsonEncode(<String, String>{
+      'title': title,
+    }),
+  );
+
+//PHP端
+&lt;?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: Access-Control-Allow-Origin, Accept");
+
+$json = file_get_contents('php://input');
+$obj = json_decode($json, true);
+
+...
+echo json_encode(PHP_PDO查詢資料);
+?&gt;
+              </code></pre>
+            </li>
+          </ul>
+
         </div>
         
 
